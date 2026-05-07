@@ -58,7 +58,7 @@ export default function LoadingScreen() {
               transition={{ duration: 2, repeat: Infinity }}
             >
               <Image
-                src="/codentrixa_logo_bg.png"
+                src="/codentrixa_logo.png"
                 alt="Codentrixa"
                 width={200}
                 height={100}

@@ -45,7 +45,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
             <Image
-              src="/codentrixa_logo_bg.png"
+              src="/codentrixa_logo.png"
               alt="Codentrixa"
               width={180}
               height={70}

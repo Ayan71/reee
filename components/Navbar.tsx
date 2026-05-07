@@ -44,7 +44,7 @@ export default function Navbar() {
               className="flex items-center"
             >
               <Image
-                src="/codentrixa_logo_bg.png"
+                src="/codentrixa_logo.png"
                 alt="Codentrixa"
                 width={160}
                 height={60}
@@ -115,7 +115,7 @@ export default function Navbar() {
             </button>
 
             <Image
-              src="/codentrixa_logo_bg.png"
+              src="/codentrixa_logo.png"
               alt="Codentrixa"
               width={160}
               height={60}
