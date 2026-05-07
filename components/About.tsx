@@ -87,7 +87,7 @@ export default function About() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           custom={0}
-          variants={fadeUp}
+         // variants={fadeUp}
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase text-[#ff6b00] border border-orange-500/30 bg-orange-500/5 mb-4">
