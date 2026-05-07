@@ -1,22 +1,22 @@
 'use client';
 
-import { motion, useInView, type Variants } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Target, Eye, Lightbulb, Users } from 'lucide-react';
 
-const fadeUp: Variants = {
+const fadeUp = {
   hidden: {
     opacity: 0,
     y: 30,
   },
 
-  visible: (i: number = 0) => ({
+  visible: (i = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
       delay: i * 0.2,
       duration: 0.6,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   }),
 };
@@ -53,7 +53,7 @@ const cards = [
 ];
 
 export default function About() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const inView = useInView(ref, {
     once: true,
