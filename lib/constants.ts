@@ -1,5 +1,5 @@
 export const COMPANY_NAME = "Codentrixa";
-export const COMPANY_EMAIL = "hello@codentrixa.com";
+export const COMPANY_EMAIL = "sales@codentrixa.com";
 export const COMPANY_PHONE = "+1 (555) 000-0000";
 export const COMPANY_ADDRESS = "San Francisco, CA 94105";
 export const COMPANY_TAGLINE = "Building Future-Ready Digital Solutions";

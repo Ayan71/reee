@@ -38,16 +38,10 @@ const CONTACT_INFO = [
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'hello@codentrixa.com',
-    href: 'mailto:hello@codentrixa.com',
+    value: 'sales@codentrixa.com',
+    href: 'mailto:sales@codentrixa.com',
   },
 
-  {
-    icon: MapPin,
-    label: 'Visit Us',
-    value: 'Remote Worldwide',
-    href: '#',
-  },
 ];
 
 const SERVICES_OPTIONS = [

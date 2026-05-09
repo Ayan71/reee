@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 '@type': 'ContactPoint',
                 telephone: '+1-555-0100',
                 contactType: 'customer service',
-                email: 'hello@codentrixa.com',
+                email: 'sales@codentrixa.com',
               },
             }),
           }}

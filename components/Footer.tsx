@@ -13,9 +13,9 @@ const SOCIAL_ICONS = {
 };
 
 const SOCIAL_LINKS = [
-  { name: 'LinkedIn', icon: 'linkedin', href: '#' },
-  { name: 'Twitter', icon: 'twitter', href: '#' },
-  { name: 'GitHub', icon: 'github', href: '#' },
+  { name: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/codentrixa/' },
+  { name: 'Twitter', icon: 'twitter', href: 'https://x.com/codentrixa47574' },
+  { name: 'GitHub', icon: 'github', href: 'https://github.com/codentrixaservices' },
   { name: 'Instagram', icon: 'instagram', href: '#' },
 ];
 
@@ -111,19 +111,19 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-5 tracking-wide">Contact</h4>
             <ul className="flex flex-col gap-3 text-white/40 text-xs">
               <li>
-                <a href="mailto:hello@codentrixa.com" className="hover:text-[#ff6b00] transition-colors">
-                  hello@codentrixa.com
+                <a href="mailto:sales@codentrixa.com" className="hover:text-[#ff6b00] transition-colors">
+                  sales@codentrixa.com
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="tel:+15550100100" className="hover:text-[#ff6b00] transition-colors">
                   +1 (555) 010-0100
                 </a>
-              </li>
-              <li className="leading-relaxed">
+              </li> */}
+              {/* <li className="leading-relaxed">
                 San Francisco, CA<br />
                 Remote Worldwide
-              </li>
+              </li> */}
             </ul>
 
             {/* Social icons */}
