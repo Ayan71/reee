@@ -1,182 +1,94 @@
 'use client';
 
-import { useRef } from 'react';
-
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 import {
-  motion,
-  useInView,
-  type Variants,
-} from 'framer-motion';
-
-import {
-  Layers,
-  Smartphone,
-  Tablet,
-  Cpu,
-  Brain,
   Globe,
-  Phone,
+  Smartphone,
+  Layers,
+  Tablet,
+  Server,
+  Sparkles,
+  Rocket,
+  Palette,
   Plug,
   Cloud,
-  Palette,
+  Wrench,
+  UserPlus,
+  Compass,
+  Building2,
   ArrowUpRight,
+  type LucideIcon,
 } from 'lucide-react';
-
 import { services } from '@/lib/data';
 
-const ICONS: Record<
-  string,
-  React.ComponentType<{
-    size?: string | number;
-    className?: string;
-  }>
-> = {
-  layers: Layers,
-  smartphone: Smartphone,
-  tablet: Tablet,
-  cpu: Cpu,
-  brain: Brain,
+const ICON_MAP: Record<string, LucideIcon> = {
   globe: Globe,
-  phone: Phone,
+  smartphone: Smartphone,
+  layers: Layers,
+  tablet: Tablet,
+  server: Server,
+  sparkles: Sparkles,
+  rocket: Rocket,
+  palette: Palette,
   plug: Plug,
   cloud: Cloud,
-  palette: Palette,
-};
-
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  }),
+  wrench: Wrench,
+  'user-plus': UserPlus,
+  compass: Compass,
+  'building-2': Building2,
 };
 
 export default function Services() {
-  const ref = useRef(null);
-
-  const inView = useInView(ref, {
-    once: true,
-    margin: '-80px',
-  });
-
   return (
-    <section
-      id="services"
-      className="section-padding bg-[#0d0d0d] relative overflow-hidden"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-
-      {/* Top Gradient Line */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent, rgba(255,107,0,0.4), transparent)',
-        }}
-      />
-
-      <div
-        className="container-custom relative z-10"
-        ref={ref}
-      >
-        {/* Header */}
-        <motion.div
-          initial="hidden"
-          animate={
-            inView ? 'visible' : 'hidden'
-          }
-          custom={0}
-          variants={fadeUp}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase text-[#ff6b00] border border-orange-500/30 bg-orange-500/5 mb-4">
-            What We Do
-          </span>
-
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            Our{' '}
-            <span className="orange-text-gradient">
-              Services
-            </span>
-          </h2>
-
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            End-to-end technology services designed to take your product from
-            concept to production at scale.
+    <section id="services" className="section-padding bg-bg">
+      <div className="container-custom">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
+          <div className="lg:col-span-7">
+            <span className="eyebrow">What We Do</span>
+            <h2 className="h-section mt-3 text-balance">
+              Enterprise services for every layer of the product stack.
+            </h2>
+          </div>
+          <p className="lede lg:col-span-5 lg:max-w-md">
+            From product design to scaled cloud operations — engagement models built for real business outcomes.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-          {services.map((service, i) => {
-            const Icon =
-              ICONS[service.icon] || Layers;
-
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {services.map((s, i) => {
+            const Icon = ICON_MAP[s.icon] || Globe;
             return (
               <motion.div
-                key={service.id}
-                initial="hidden"
-                animate={
-                  inView
-                    ? 'visible'
-                    : 'hidden'
-                }
-                custom={i + 1}
-                variants={fadeUp}
-                whileHover={{
-                  y: -8,
-                  scale: 1.02,
-                }}
-                className="group glass-card gradient-border rounded-2xl p-6 relative overflow-hidden"
+                key={s.slug}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.4, delay: (i % 8) * 0.04 }}
+                className="card-surface p-6 group flex flex-col"
               >
-                {/* Hover Glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 0%, rgba(255,107,0,0.08) 0%, transparent 70%)',
-                  }}
-                />
-
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-5 group-hover:bg-orange-500/20 transition-all duration-300 group-hover:scale-110">
-                    <Icon
-                      size={22}
-                      className="text-[#ff6b00]"
-                    />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-semibold text-white mb-2 text-[15px] leading-snug group-hover:text-[#ff6b00] transition-colors duration-300">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-white/40 text-xs leading-relaxed line-clamp-3">
-                    {service.description}
-                  </p>
-
-                  {/* Learn More */}
-                  {/* <div className="mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div className="flex items-center gap-1 text-[#ff6b00] text-xs font-medium">
-                      Learn more
-
-                      <ArrowUpRight size={12} />
-                    </div>
-                  </div> */}
+                <div className="flex items-start justify-between mb-4">
+                  <span className="inline-flex w-11 h-11 rounded-xl bg-[#FFE7DA] text-brand items-center justify-center">
+                    <Icon className="w-5 h-5" />
+                  </span>
+                  <span className="text-[10px] font-semibold tracking-[0.18em] uppercase muted-text">
+                    Service
+                  </span>
                 </div>
+                <h3 className="text-base font-semibold text-ink mb-2">{s.title}</h3>
+                <p className="text-sm muted-text leading-relaxed mb-4 flex-1">{s.description}</p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {s.highlights.map((h) => (
+                    <span key={h} className="chip">{h}</span>
+                  ))}
+                </div>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-ink group-hover:text-brand transition-colors"
+                >
+                  Learn more
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
               </motion.div>
             );
           })}

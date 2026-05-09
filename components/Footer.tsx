@@ -1,164 +1,151 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Linkedin, Twitter, Github, Instagram, ArrowUpRight, Mail } from 'lucide-react';
-import { navLinks, services } from '@/lib/data';
+import Link from 'next/link';
+import { Linkedin, Twitter, Github, Instagram, Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
+import { services, techCategories } from '@/lib/data';
 
-const SOCIAL_ICONS = {
-  linkedin: Linkedin,
-  twitter: Twitter,
-  github: Github,
-  instagram: Instagram,
-};
-
-const SOCIAL_LINKS = [
-  { name: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/codentrixa/' },
-  { name: 'Twitter', icon: 'twitter', href: 'https://x.com/codentrixa47574' },
-  { name: 'GitHub', icon: 'github', href: 'https://github.com/codentrixaservices' },
-  { name: 'Instagram', icon: 'instagram', href: '#' },
+const companyLinks = [
+  { label: 'About', href: '/#about' },
+  { label: 'Case Studies', href: '/#case-studies' },
+  { label: 'Outsourcing', href: '/#outsourcing' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Footer() {
-  const handleNavClick = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const topServices = services.slice(0, 7);
+  const topTech = techCategories.flatMap((c) => c.items).slice(0, 8);
 
   return (
-    <footer className="bg-[#0a0a0a] relative overflow-hidden border-t border-white/5">
-      {/* Top gradient line */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px]"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,107,0,0.4), transparent)' }}
-      />
-
-      {/* Background glow */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(255,107,0,0.04) 0%, transparent 70%)' }}
-      />
-
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
-        {/* Main footer content */}
-        <div className="py-16 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Brand column */}
-          <div className="col-span-2 lg:col-span-2">
-            <Image
-              src="/codentrixa_logo.png"
-              alt="Codentrixa"
-              width={200}
-              height={80}
-              className="object-contain h-20 w-auto mb-6"
-            />
-            <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
-              Building smarter digital solutions for businesses worldwide. From concept to production — we engineer the future.
-            </p>
-
-            {/* Newsletter signup */}
-            <div className="flex gap-2">
-              <div className="flex-1 relative">
-                <Mail size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-3 py-2.5 text-white text-xs placeholder-white/20 focus:outline-none focus:border-orange-500/40"
-                />
-              </div>
-              <button className="btn-primary text-xs py-2.5 px-4 rounded-xl">
-                Subscribe
-              </button>
-            </div>
-          </div>
-
-          {/* Quick links */}
+    <footer className="surface border-t border-line">
+      <div className="container-custom py-16 md:py-20">
+        {/* Top CTA */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 pb-12 mb-12 border-b border-line">
           <div>
-            <h4 className="text-white font-semibold text-sm mb-5 tracking-wide">Company</h4>
-            <ul className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
-                    className="text-white/40 hover:text-[#ff6b00] text-sm transition-colors flex items-center gap-1 group"
-                  >
-                    {link.label}
-                    <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <h3 className="text-2xl md:text-3xl font-semibold text-ink leading-tight">
+              Have a project in mind?
+              <span className="block muted-text font-normal text-base mt-2 max-w-xl">
+                Tell us what you are building. We will respond within 48 hours with a clear next step.
+              </span>
+            </h3>
           </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-5 tracking-wide">Services</h4>
-            <ul className="flex flex-col gap-3">
-              {services.slice(0, 6).map((s) => (
-                <li key={s.id}>
-                  <button
-                    onClick={() => handleNavClick('#services')}
-                    className="text-white/40 hover:text-[#ff6b00] text-xs transition-colors text-left"
-                  >
-                    {s.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-5 tracking-wide">Contact</h4>
-            <ul className="flex flex-col gap-3 text-white/40 text-xs">
-              <li>
-                <a href="mailto:contact@codentrixa.com" className="hover:text-[#ff6b00] transition-colors">
-                  contact@codentrixa.com
-                </a>
-              </li>
-              {/* <li>
-                <a href="tel:+15550100100" className="hover:text-[#ff6b00] transition-colors">
-                  +1 (555) 010-0100
-                </a>
-              </li> */}
-              {/* <li className="leading-relaxed">
-                San Francisco, CA<br />
-                Remote Worldwide
-              </li> */}
-            </ul>
-
-            {/* Social icons */}
-            <div className="flex gap-3 mt-6">
-              {SOCIAL_LINKS.map((social) => {
-                const Icon = SOCIAL_ICONS[social.icon as keyof typeof SOCIAL_ICONS];
-                return (
-                  <motion.a
-                    key={social.name}
-                    href={social.href}
-                    whileHover={{ scale: 1.15, y: -2 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-white/40 hover:text-[#ff6b00] hover:border-orange-500/30 transition-colors"
-                    aria-label={social.name}
-                  >
-                    <Icon size={14} />
-                  </motion.a>
-                );
-              })}
-            </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/#contact" className="btn-secondary">
+              Book Consultation
+            </Link>
+            <Link href="/#contact" className="btn-primary">
+              Start a Project <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/25 text-xs">
-            &copy; {new Date().getFullYear()} Codentrixa. All rights reserved.
-          </p>
-          {/* <div className="flex gap-6">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-              <a key={item} href="#" className="text-white/25 hover:text-white/60 text-xs transition-colors">
-                {item}
+        {/* Columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-10">
+          <div className="col-span-2 lg:col-span-2">
+            <Link href="/" className="flex items-center gap-2.5">
+              <span className="w-9 h-9 rounded-lg bg-brand text-white flex items-center justify-center font-semibold">
+                C
+              </span>
+              <div className="leading-tight">
+                <div className="font-semibold text-ink">Codentrixa</div>
+                <div className="text-[10px] tracking-[0.2em] uppercase muted-text">IT &amp; Software</div>
+              </div>
+            </Link>
+            <p className="mt-5 text-sm leading-relaxed muted-text max-w-sm">
+              A premium software development company building enterprise-grade web, mobile, AI, and SaaS products
+              for clients and outsourcing partners worldwide.
+            </p>
+            <div className="mt-5 flex flex-col gap-2 text-sm">
+              <a href="mailto:contact@codentrixa.com" className="flex items-center gap-2 text-ink/80 hover:text-brand">
+                <Mail className="w-4 h-4 text-brand" /> contact@codentrixa.com
               </a>
+              <a href="tel:+15550100" className="flex items-center gap-2 text-ink/80 hover:text-brand">
+                <Phone className="w-4 h-4 text-brand" /> +1 (555) 0100
+              </a>
+              <span className="flex items-center gap-2 text-ink/80">
+                <MapPin className="w-4 h-4 text-brand" /> Remote-first &middot; Global delivery
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <div className="text-xs font-semibold tracking-[0.2em] uppercase text-ink mb-4">Services</div>
+            <ul className="space-y-2.5 text-sm">
+              {topServices.map((s) => (
+                <li key={s.slug}>
+                  <Link href="/#services" className="muted-text hover:text-brand transition-colors">
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-xs font-semibold tracking-[0.2em] uppercase text-ink mb-4">Technologies</div>
+            <ul className="space-y-2.5 text-sm">
+              {topTech.map((t) => (
+                <li key={t.name}>
+                  <Link href="/#technologies" className="muted-text hover:text-brand transition-colors">
+                    {t.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-xs font-semibold tracking-[0.2em] uppercase text-ink mb-4">Company</div>
+            <ul className="space-y-2.5 text-sm">
+              {companyLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="muted-text hover:text-brand transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-xs font-semibold tracking-[0.2em] uppercase text-ink mb-4">Hire / Outsource</div>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link href="/#outsourcing" className="muted-text hover:text-brand">Hire Remote Developers</Link></li>
+              <li><Link href="/#outsourcing" className="muted-text hover:text-brand">Offshore Teams</Link></li>
+              <li><Link href="/#outsourcing" className="muted-text hover:text-brand">Startup Partnership</Link></li>
+              <li><Link href="/careers" className="muted-text hover:text-brand">Join Our Team</Link></li>
+              <li><Link href="/#contact" className="muted-text hover:text-brand">WhatsApp Sales</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-14 pt-8 border-t border-line flex flex-col md:flex-row items-center justify-between gap-5">
+          <div className="text-xs muted-text">
+            &copy; {new Date().getFullYear()} Codentrixa. All rights reserved.
+          </div>
+          <div className="flex items-center gap-5 text-xs muted-text">
+            <Link href="#" className="hover:text-brand">Privacy Policy</Link>
+            <Link href="#" className="hover:text-brand">Terms &amp; Conditions</Link>
+            <Link href="#" className="hover:text-brand">Cookies</Link>
+          </div>
+          <div className="flex items-center gap-2">
+            {[
+              { Icon: Linkedin, href: '#', label: 'LinkedIn' },
+              { Icon: Twitter, href: '#', label: 'Twitter' },
+              { Icon: Github, href: '#', label: 'GitHub' },
+              { Icon: Instagram, href: '#', label: 'Instagram' },
+            ].map(({ Icon, href, label }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                className="w-9 h-9 rounded-full bg-card border border-line flex items-center justify-center text-ink/70 hover:text-brand hover:border-brand transition-colors"
+              >
+                <Icon className="w-4 h-4" />
+              </Link>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </footer>
