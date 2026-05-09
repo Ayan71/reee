@@ -73,13 +73,14 @@ export const services = [
 ];
 
 export const technologies = [
+    { name: "AI/ML", icon: "🤖", category: "Intelligence" },
   { name: "React", icon: "⚛", category: "Frontend" },
   { name: "Next.js", icon: "▲", category: "Frontend" },
   { name: "Node.js", icon: "⬡", category: "Backend" },
   { name: "MongoDB", icon: "🍃", category: "Database" },
   { name: "Flutter", icon: "◈", category: "Mobile" },
   { name: "React Native", icon: "⚛", category: "Mobile" },
-  { name: "Android & iOS ", icon: "☕", category: "Mobile" },
+  { name: "Android & iOS ",     icon: "📱", category: "Mobile" },
   { name: "AI/ML", icon: "🤖", category: "Intelligence" },
   { name: "TypeScript", icon: "TS", category: "Language" },
   { name: "Python", icon: "🐍", category: "Language" },
