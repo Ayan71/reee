@@ -21,16 +21,16 @@ export const metadata: Metadata = {
     title: 'Codentrixa | Building Future-Ready Digital Solutions',
     description: 'Premium software development company specializing in MERN Stack, Flutter, React Native, Java, AI/ML, and Cloud solutions.',
     siteName: 'Codentrixa',
-    images: [{ url: '/codentrixa_logo.png', width: 1200, height: 630, alt: 'Codentrixa' }],
+    images: [{ url: '/codentrixa_logo_black_bg.png', width: 1200, height: 630, alt: 'Codentrixa' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Codentrixa | Building Future-Ready Digital Solutions',
     description: 'Premium software development company specializing in MERN Stack, Flutter, React Native, Java, AI/ML, and Cloud solutions.',
-    images: ['/codentrixa_logo.png'],
+    images: ['/codentrixa_logo_black_bg.png'],
     creator: '@codentrixa',
   },
-  icons: { icon: '/codentrixa_logo.png', apple: '/codentrixa_logo.png' },
+  icons: { icon: '/codentrixa_logo_black_bg.png', apple: '/codentrixa_logo_black_bg.png' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -45,9 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'Organization',
               name: 'Codentrixa',
               url: 'https://codentrixa.com',
-              logo: 'https://codentrixa.com/codentrixa_logo.png',
+              logo: 'https://codentrixa.com/codentrixa_logo_black_bg.png',
               description: 'Premium software development company.',
-              foundingDate: '2019',
+              foundingDate: '2026',
               contactPoint: {
                 '@type': 'ContactPoint',
                 telephone: '+1-555-0100',
