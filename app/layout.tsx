@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: 'Codentrixa | Building Future-Ready Digital Solutions',
-  description: 'Codentrixa is a premium software development company specializing in MERN Stack, Flutter, React Native, Java, AI/ML, Full Stack Web, Mobile App Development, API Integration, and Cloud Deployment.',
+  description: 'Codentrixa is a premium software development company specializing in MERN Stack, Flutter, React Native, AI/ML, Full Stack Web, Mobile App Development, API Integration, and Cloud Deployment.',
   keywords: 'software development, MERN stack, Flutter development, React Native, AI solutions, web development, mobile app development, IT company, Codentrixa',
   authors: [{ name: 'Codentrixa' }],
   creator: 'Codentrixa',
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://codentrixa.com',
     title: 'Codentrixa | Building Future-Ready Digital Solutions',
-    description: 'Premium software development company specializing in MERN Stack, Flutter, React Native, Java, AI/ML, and Cloud solutions.',
+    description: 'Premium software development company specializing in MERN Stack, Flutter, React Native, AI/ML, and Cloud solutions.',
     siteName: 'Codentrixa',
     images: [{ url: '/codentrixa_logo_black_bg.png', width: 1200, height: 630, alt: 'Codentrixa' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Codentrixa | Building Future-Ready Digital Solutions',
-    description: 'Premium software development company specializing in MERN Stack, Flutter, React Native, Java, AI/ML, and Cloud solutions.',
+    description: 'Premium software development company specializing in MERN Stack, Flutter, React Native,AI/ML, and Cloud solutions.',
     images: ['/codentrixa_logo_black_bg.png'],
     creator: '@codentrixa',
   },

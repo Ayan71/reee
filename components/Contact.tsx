@@ -48,7 +48,7 @@ const SERVICES_OPTIONS = [
   'MERN Stack Development',
   'Flutter App Development',
   'React Native',
-  'Java Development',
+  'Android & iOS App Development',
   'AI & Machine Learning',
   'Full Stack Web',
   'Mobile App Development',
@@ -191,7 +191,7 @@ export default function Contact() {
             ))}
 
             {/* Location Card */}
-            <motion.div
+            {/* <motion.div
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
               custom={5}
@@ -222,7 +222,7 @@ export default function Contact() {
                     'radial-gradient(circle at 50% 50%, rgba(255,107,0,0.05) 0%, transparent 70%)',
                 }}
               />
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Contact Form */}
