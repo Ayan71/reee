@@ -111,8 +111,8 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-5 tracking-wide">Contact</h4>
             <ul className="flex flex-col gap-3 text-white/40 text-xs">
               <li>
-                <a href="mailto:sales@codentrixa.com" className="hover:text-[#ff6b00] transition-colors">
-                  sales@codentrixa.com
+                <a href="mailto:contact@codentrixa.com" className="hover:text-[#ff6b00] transition-colors">
+                  contact@codentrixa.com
                 </a>
               </li>
               {/* <li>

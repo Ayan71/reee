@@ -38,8 +38,8 @@ const CONTACT_INFO = [
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'sales@codentrixa.com',
-    href: 'mailto:sales@codentrixa.com',
+    value: 'contact@codentrixa.com',
+    href: 'mailto:contact@codentrixa.com',
   },
 
 ];
