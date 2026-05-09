@@ -43,13 +43,6 @@ const CONTACT_INFO = [
   },
 
   {
-    icon: Phone,
-    label: 'Call Us',
-    value: '+1 (555) 010-0100',
-    href: 'tel:+15550100100',
-  },
-
-  {
     icon: MapPin,
     label: 'Visit Us',
     value: 'Remote Worldwide',

@@ -89,54 +89,65 @@ export const technologies = [
 export const projects = [
   {
     id: 1,
-    title: "AI-Powered Analytics Platform",
-    description: "Real-time data analytics dashboard with machine learning insights and predictive modeling.",
+    title: "AI Business Automation Platform",
+    description:
+      "Smart AI-powered platform for automating workflows, analytics, and business operations in real-time.",
     category: "AI/ML",
-    image: "https://images.pexels.com/photos/8438923/pexels-photo-8438923.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Python", "React", "TensorFlow", "AWS"],
+    image:
+      "https://images.pexels.com/photos/8438923/pexels-photo-8438923.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["React", "Node.js", "OpenAI", "MongoDB"],
   },
   {
     id: 2,
-    title: "FinTech Mobile Application",
-    description: "Cross-platform banking app with biometric auth, real-time transactions and portfolio management.",
-    category: "Mobile",
-    image: "https://images.pexels.com/photos/6771900/pexels-photo-6771900.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Flutter", "Node.js", "MongoDB"],
+    title: "Modern Company Website",
+    description:
+      "Professional and responsive business website with modern UI/UX, SEO optimization, and fast performance.",
+    category: "Web",
+    image:
+      "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["Next.js", "Tailwind CSS", "SEO", "Vercel"],
   },
   {
     id: 3,
     title: "E-Commerce Marketplace",
-    description: "High-performance MERN stack marketplace with real-time inventory, payments, and delivery tracking.",
+    description:
+      "Scalable MERN stack e-commerce platform with secure payments, admin dashboard, and order management.",
     category: "Web",
-    image: "https://images.pexels.com/photos/5632381/pexels-photo-5632381.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["React", "Node.js", "MongoDB", "Redis"],
+    image:
+      "https://images.pexels.com/photos/5632381/pexels-photo-5632381.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["React", "Node.js", "MongoDB", "Stripe"],
   },
   {
     id: 4,
-    title: "Healthcare Management System",
-    description: "Enterprise-grade patient management platform with telemedicine, records, and appointment scheduling.",
-    category: "Enterprise",
-    image: "https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Java", "Spring Boot", "React", "PostgreSQL"],
+    title: "Restaurant Booking App",
+    description:
+      "Mobile-friendly restaurant booking and food ordering application with real-time notifications.",
+    category: "Mobile",
+    image:
+      "https://images.pexels.com/photos/6771900/pexels-photo-6771900.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["Flutter", "Firebase", "Node.js"],
   },
   {
     id: 5,
-    title: "Smart IoT Dashboard",
-    description: "Real-time IoT device monitoring platform with automated alerts and predictive maintenance.",
+    title: "AI Chatbot Solution",
+    description:
+      "Custom AI chatbot for customer support, lead generation, and automated responses for businesses.",
     category: "AI/ML",
-    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Next.js", "Python", "MQTT", "Cloud"],
+    image:
+      "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["OpenAI", "React", "Express.js", "MongoDB"],
   },
   {
     id: 6,
-    title: "Social Media App",
-    description: "Feature-rich social platform with real-time messaging, stories, live streaming, and AI content moderation.",
+    title: "Social Media Mobile App",
+    description:
+      "Cross-platform social networking app with chat, stories, profile management, and media sharing.",
     category: "Mobile",
-    image: "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["React Native", "GraphQL", "AWS"],
+    image:
+      "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: ["React Native", "Node.js", "Socket.io"],
   },
 ];
-
 export const testimonials = [
   {
     id: 1,
@@ -173,7 +184,7 @@ export const testimonials = [
   {
     id: 5,
     name: "Emma Rodriguez",
-    role: "Director, CloudFirst Agency",
+    role: "Director, CloudFirst ",
     content: "Codentrixa's cloud deployment expertise saved us thousands monthly. Their DevOps setup and CI/CD pipelines are enterprise-grade. Highly recommended.",
     rating: 5,
     avatar: "ER",
@@ -213,13 +224,12 @@ export const whyChooseUs = [
   },
 ];
 
-export const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "5+", label: "Years Experience" },
-  { value: "99%", label: "Client Satisfaction" },
+export const STATS = [
+  { value: "5+", label: "Projects Completed" },
+  { value: "5+", label: "Satisfied Clients" },
+ { value: '2026', label: 'Founded In' },
+  { value: "100%", label: "Project Commitment" },
 ];
-
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },

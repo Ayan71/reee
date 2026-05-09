@@ -20,7 +20,6 @@ const CATEGORIES = [
   'Web',
   'Mobile',
   'AI/ML',
-  'Enterprise',
 ];
 
 const fadeUp: Variants = {
@@ -182,12 +181,12 @@ export default function Portfolio() {
                   </div>
 
                   {/* Arrow */}
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:bg-[#ff6b00]">
+                  {/* <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:bg-[#ff6b00]">
                     <ArrowUpRight
                       size={14}
                       className="text-white"
                     />
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Content */}

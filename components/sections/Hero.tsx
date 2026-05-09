@@ -179,10 +179,10 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.6 }}
         >
           {[
-            { value: '150+', label: 'Projects Delivered' },
-            { value: '50+', label: 'Happy Clients' },
-            { value: '5+', label: 'Years Experience' },
-            { value: '99%', label: 'Satisfaction Rate' },
+{ value: '5+', label: 'Projects Delivered' },
+{ value: '5+', label: 'Happy Clients' },
+{ value: '2026', label: 'Founded In' },
+{ value: '99%', label: 'Satisfaction Rate' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl sm:text-3xl font-black gradient-text">{stat.value}</div>

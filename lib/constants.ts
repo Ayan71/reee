@@ -247,10 +247,10 @@ export const TESTIMONIALS = [
 ];
 
 export const STATS = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "5+", label: "Years Experience" },
-  { value: "99%", label: "Client Satisfaction" },
+  { value: "5+", label: "Projects Completed" },
+  { value: "5+", label: "Satisfied Clients" },
+  { value: '2026', label: 'Founded In' },
+  { value: "100%", label: "Project Commitment" },
 ];
 
 export const SOCIAL_LINKS = [

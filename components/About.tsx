@@ -99,7 +99,7 @@ export default function About() {
           </h2>
 
           <p className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed">
-            Founded in 2019, Codentrixa is a premium software development agency
+            Founded in 2026, Codentrixa is a premium software development 
             that transforms ambitious ideas into powerful digital realities.
           </p>
         </motion.div>
@@ -120,7 +120,7 @@ export default function About() {
               </h3>
 
               <p className="text-white/50 leading-relaxed mb-6">
-                We are more than a software agency — we are your technology
+                We are more than a software  — we are your technology
                 partner. From startups disrupting industries to enterprises
                 scaling globally, Codentrixa delivers engineering excellence at
                 every level.
@@ -137,9 +137,9 @@ export default function About() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-white/5">
               {[
-                { value: '150+', label: 'Projects' },
-                { value: '30+', label: 'Engineers' },
-                { value: '12+', label: 'Countries' },
+                { value: '5+', label: 'Projects Completed' },
+                { value: '5+', label: 'Satisfied Clients' },
+                { value: '2026', label: 'Founded In' },
               ].map((s) => (
                 <div key={s.label} className="text-center">
                   <div className="text-2xl font-bold orange-text-gradient">

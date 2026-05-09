@@ -57,10 +57,10 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
         </p>
 
         {/* Arrow */}
-        <div className="mt-5 flex items-center gap-1.5 text-[#ff6b00] text-xs font-semibold opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+        {/* <div className="mt-5 flex items-center gap-1.5 text-[#ff6b00] text-xs font-semibold opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
           Learn more
           <ArrowUpRight className="w-3.5 h-3.5" />
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );

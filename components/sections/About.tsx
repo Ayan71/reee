@@ -85,7 +85,7 @@ export default function About() {
               <div className="pl-8">
                 <h3 className="text-xl font-bold text-white mb-4">Our Story</h3>
                 <p className="text-white/55 leading-relaxed mb-4">
-                  Founded by a team of passionate engineers and designers, Codentrixa has grown into a full-service digital agency trusted by startups from Silicon Valley to Singapore.
+                  Founded by a team of passionate engineers and designers, Codentrixa has grown into a full-service digital  trusted by startups from Silicon Valley to Singapore.
                 </p>
                 <p className="text-white/55 leading-relaxed mb-6">
                   We combine deep technical expertise with a product-thinking mindset to deliver solutions that don't just work — they excel. Every line of code we write is crafted with purpose, performance, and longevity in mind.

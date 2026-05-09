@@ -128,7 +128,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-orange-500/20 mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
-            <span className="text-sm text-white/70 font-medium tracking-wide">Premium IT Solutions Agency</span>
+            <span className="text-sm text-white/70 font-medium tracking-wide">Premium IT Solutions </span>
           </motion.div>
 
           {/* Heading */}
@@ -187,10 +187,10 @@ export default function Hero() {
             className="flex flex-wrap gap-8"
           >
             {[
-              { value: '150+', label: 'Projects Delivered' },
-              { value: '50+', label: 'Happy Clients' },
-              { value: '5+', label: 'Years Experience' },
-              { value: '99%', label: 'Satisfaction Rate' },
+{ value: '5+', label: 'Projects Delivered' },
+{ value: '5+', label: 'Happy Clients' },
+{ value: '2026', label: 'Founded In' },
+{ value: '99%', label: 'Satisfaction Rate' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
