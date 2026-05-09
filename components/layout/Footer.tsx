@@ -151,13 +151,13 @@ export default function Footer() {
           <p className="text-white/30 text-xs">
             © {currentYear} {COMPANY_NAME}. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             {['Privacy Policy', 'Terms of Service', 'Cookies'].map((item) => (
               <a key={item} href="#" className="text-white/30 hover:text-white/60 text-xs transition-colors duration-200">
                 {item}
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

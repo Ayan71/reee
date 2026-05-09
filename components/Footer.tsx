@@ -152,13 +152,13 @@ export default function Footer() {
           <p className="text-white/25 text-xs">
             &copy; {new Date().getFullYear()} Codentrixa. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
               <a key={item} href="#" className="text-white/25 hover:text-white/60 text-xs transition-colors">
                 {item}
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
