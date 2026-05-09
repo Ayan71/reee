@@ -47,9 +47,9 @@ export default function Footer() {
             <Image
               src="/codentrixa_logo.png"
               alt="Codentrixa"
-              width={180}
-              height={70}
-              className="object-contain h-12 w-auto mb-6"
+              width={200}
+              height={80}
+              className="object-contain h-20 w-auto mb-6"
             />
             <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
               Building smarter digital solutions for businesses worldwide. From concept to production — we engineer the future.

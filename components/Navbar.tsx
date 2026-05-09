@@ -46,9 +46,9 @@ export default function Navbar() {
               <Image
                 src="/codentrixa_logo.png"
                 alt="Codentrixa"
-                width={160}
-                height={60}
-                className="object-contain h-10 w-auto"
+                width={200}
+                height={80}
+                className="object-contain h-20 w-auto"
                 priority
               />
             </motion.a>
