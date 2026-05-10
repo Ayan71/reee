@@ -1,15 +1,24 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import PageHeader from '@/components/sections/PageHeader';
 import Outsourcing from '@/components/sections/Outsourcing';
 import FAQ from '@/components/sections/FAQ';
 import CTA from '@/components/sections/CTA';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildMetadata, breadcrumbLd, serviceLd, faqLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Outsourcing & Dedicated Teams',
   description:
     'Hire dedicated remote developers, offshore squads, or full outsourced IT teams. Monthly engagement, senior engineers, and full transparency.',
-};
+  path: '/outsourcing',
+  keywords: [
+    'IT outsourcing services',
+    'dedicated remote developers',
+    'offshore development team',
+    'startup CTO partnership',
+    'staff augmentation',
+  ],
+});
 
 const FAQ_ITEMS = [
   {
@@ -41,6 +50,21 @@ const FAQ_ITEMS = [
 export default function OutsourcingPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbLd([
+            { name: 'Home', path: '/' },
+            { name: 'Outsourcing', path: '/outsourcing' },
+          ]),
+          serviceLd({
+            name: 'IT Outsourcing & Dedicated Development Teams',
+            description:
+              'Senior engineers on a monthly retainer — dedicated developers, offshore squads, or full outsourced IT teams.',
+            path: '/outsourcing',
+          }),
+          faqLd(FAQ_ITEMS),
+        ]}
+      />
       <PageHeader
         eyebrow="Outsourcing services"
         title="Senior engineers, on a monthly invoice. No agency markup, no surprises."

@@ -3,12 +3,24 @@ import PageHeader from '@/components/sections/PageHeader';
 import Services from '@/components/sections/Services';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import CTA from '@/components/sections/CTA';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildMetadata, breadcrumbLd, serviceLd } from '@/lib/seo';
+import { SERVICES } from '@/lib/constants';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Services',
   description:
     'Web, mobile, AI, SaaS, cloud, and outsourcing services from a senior engineering studio. End-to-end delivery, monthly retainers, long-term support.',
-};
+  path: '/services',
+  keywords: [
+    'web development services',
+    'mobile app development',
+    'AI development services',
+    'SaaS development',
+    'IT consulting',
+    'dedicated developers',
+  ],
+});
 
 const DELIVERY_PROCESS = [
   { step: 1, title: 'Discovery', description: 'Spec workshop and a written delivery plan in week one — fixed scope or rolling sprint, your call.' },
@@ -21,6 +33,21 @@ const DELIVERY_PROCESS = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbLd([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+          ]),
+          ...SERVICES.map((s) =>
+            serviceLd({
+              name: s.title,
+              description: s.short,
+              path: `/services#${s.slug}`,
+            }),
+          ),
+        ]}
+      />
       <PageHeader
         eyebrow="Services"
         title="An enterprise studio you can scale up — or down — every quarter."
