@@ -265,7 +265,7 @@ export const TECH_DETAIL_SLUGS = [
 ] as const;
 
 // ─────────────────────────────  Case Studies  ────────────────────────────
-
+export const SITE_URL = 'https://www.codentrixa.com';
 export const CASE_STUDIES = [
   {
     slug: 'logistics-platform',
