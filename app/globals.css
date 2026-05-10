@@ -188,6 +188,25 @@
     height: 1px;
     background: var(--line);
   }
+
+  /* Form inputs */
+  .form-input {
+    @apply w-full px-3 py-2.5 rounded-md text-sm transition-all;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .form-input::placeholder {
+    color: var(--muted);
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(245, 92, 26, 0.15);
+  }
+  textarea.form-input {
+    line-height: 1.55;
+  }
 }
 
 @layer utilities {

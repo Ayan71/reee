@@ -1,128 +1,105 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import {
-  Layers, Smartphone, MonitorSmartphone, Coffee,
-  Brain, Globe, AppWindow, Plug, Cloud, Palette, ArrowUpRight
+  Globe, Smartphone, Layers, MonitorSmartphone, Server, BrainCircuit, Box,
+  Palette, Plug, Cloud, LifeBuoy, UserPlus, Briefcase, Handshake, ArrowUpRight,
 } from 'lucide-react';
 import { SERVICES } from '@/lib/constants';
 
-const ICON_MAP: Record<string, React.ElementType> = {
-  layers: Layers,
-  smartphone: Smartphone,
-  'monitor-smartphone': MonitorSmartphone,
-  coffee: Coffee,
-  brain: Brain,
+const ICONS: Record<string, React.ElementType> = {
   globe: Globe,
-  'app-window': AppWindow,
+  smartphone: Smartphone,
+  layers: Layers,
+  'monitor-smartphone': MonitorSmartphone,
+  server: Server,
+  'brain-circuit': BrainCircuit,
+  box: Box,
+  palette: Palette,
   plug: Plug,
   cloud: Cloud,
-  palette: Palette,
+  'life-buoy': LifeBuoy,
+  'user-plus': UserPlus,
+  briefcase: Briefcase,
+  handshake: Handshake,
 };
 
-function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
-  const Icon = ICON_MAP[service.icon] || Layers;
+type Props = {
+  /** Limit the number of services rendered (used on the home preview). */
+  limit?: number;
+  /** Show eyebrow + headline. */
+  showHeader?: boolean;
+  /** Optional override for the headline. */
+  title?: string;
+  /** Show the bottom CTA link to the services page. */
+  showSeeAll?: boolean;
+};
+
+export default function Services({ limit, showHeader = true, title, showSeeAll = false }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const list = limit ? SERVICES.slice(0, limit) : SERVICES;
 
   return (
-    <motion.div
-      ref={ref}
-      className="group relative glass-card rounded-2xl p-6 cursor-default overflow-hidden transition-all duration-300 hover:border-[#ff6b00]/30"
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: (index % 5) * 0.08, duration: 0.6 }}
-      whileHover={{ y: -6, transition: { duration: 0.25 } }}
-    >
-      {/* Background gradient on hover */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`} />
-
-      {/* Glow on hover */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ boxShadow: '0 0 30px rgba(255,107,0,0.08) inset' }} />
-
-      <div className="relative z-10">
-        {/* Icon */}
-        <div className="w-12 h-12 rounded-xl bg-[#ff6b00]/10 border border-[#ff6b00]/15 flex items-center justify-center mb-5 group-hover:bg-[#ff6b00]/20 group-hover:border-[#ff6b00]/30 group-hover:scale-110 transition-all duration-300">
-          <Icon className="w-5 h-5 text-[#ff6b00]" />
-        </div>
-
-        {/* Content */}
-        <h3 className="text-white font-bold text-base mb-2.5 group-hover:text-white transition-colors">
-          {service.title}
-        </h3>
-        <p className="text-white/45 text-sm leading-relaxed group-hover:text-white/60 transition-colors">
-          {service.description}
-        </p>
-
-        {/* Arrow */}
-        {/* <div className="mt-5 flex items-center gap-1.5 text-[#ff6b00] text-xs font-semibold opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-          Learn more
-          <ArrowUpRight className="w-3.5 h-3.5" />
-        </div> */}
-      </div>
-    </motion.div>
-  );
-}
-
-export default function Services() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-
-  return (
-    <section id="services" className="relative py-24 lg:py-32 bg-[#080808] overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#ff6b00]/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          className="flex flex-col items-center text-center mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ff6b00]/10 border border-[#ff6b00]/15 text-[#ff8c40] text-xs font-semibold uppercase tracking-widest mb-5">
-            What We Do
+    <section id="services" className="section-padding" style={{ background: 'var(--bg)' }}>
+      <div className="container-custom" ref={ref}>
+        {showHeader && (
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div className="max-w-2xl">
+              <span className="eyebrow">What we do</span>
+              <h2 className="h-section mt-3 text-balance">
+                {title ?? 'Enterprise services, end to end.'}
+              </h2>
+              <p className="lede mt-4 text-pretty">
+                One studio, one squad — across product, design, mobile, web, AI, cloud, and long-term support.
+              </p>
+            </div>
+            {showSeeAll && (
+              <Link href="/services" className="btn-secondary self-start md:self-end">
+                View all services
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            )}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-5">
-            Our <span className="gradient-text">Services</span>
-          </h2>
-          <p className="text-white/50 text-lg max-w-xl leading-relaxed">
-            From ideation to deployment, we provide end-to-end digital solutions tailored to your business goals.
-          </p>
-        </motion.div>
+        )}
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
-          {SERVICES.map((service, i) => (
-            <ServiceCard key={service.id} service={service} index={i} />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+          {list.map((s, i) => {
+            const Icon = ICONS[s.icon] || Layers;
+            return (
+              <motion.div
+                key={s.slug}
+                id={s.slug}
+                className="group card-surface p-5 md:p-6 flex flex-col"
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: (i % 4) * 0.06 + Math.floor(i / 4) * 0.03, duration: 0.5 }}
+              >
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:-translate-y-0.5"
+                  style={{ background: 'var(--accent-soft)' }}
+                >
+                  <Icon className="w-5 h-5" style={{ color: 'var(--accent-dark)' }} />
+                </div>
+                <h3 className="text-base font-semibold" style={{ color: 'var(--ink)' }}>
+                  {s.title}
+                </h3>
+                <p className="text-sm leading-relaxed mt-2 flex-1" style={{ color: 'var(--muted)' }}>
+                  {s.short}
+                </p>
+                <Link
+                  href={`/services#${s.slug}`}
+                  className="mt-5 inline-flex items-center gap-1 text-xs font-semibold transition-colors"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  Learn more <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          className="flex justify-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <p className="text-white/40 text-sm text-center">
-            Not sure what you need?{' '}
-            <button
-              onClick={() => {
-                const el = document.querySelector('#contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="text-[#ff6b00] hover:text-[#ff8c40] font-medium transition-colors underline-offset-2 hover:underline"
-            >
-              Talk to our team →
-            </button>
-          </p>
-        </motion.div>
       </div>
     </section>
   );

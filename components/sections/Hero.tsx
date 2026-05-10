@@ -1,202 +1,249 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Play, Code as Code2, Database, Cpu, Globe, Smartphone, Cloud } from 'lucide-react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  CalendarClock,
+  UsersRound,
+  ShieldCheck,
+  Layers,
+  Code as Code2,
+  Cloud,
+  Smartphone,
+  Cpu,
+} from 'lucide-react';
 
-const TYPED_STRINGS = [
-  'Digital Solutions',
-  'Web Applications',
-  'Mobile Experiences',
-  'AI-Powered Products',
-  'Cloud Platforms',
+const FLOATING_BADGES = [
+  { Icon: Code2, label: 'TypeScript', x: '4%', y: '14%' },
+  { Icon: Smartphone, label: 'Flutter', x: '92%', y: '20%' },
+  { Icon: Cpu, label: 'AI / RAG', x: '6%', y: '78%' },
+  { Icon: Cloud, label: 'AWS', x: '90%', y: '74%' },
 ];
-
-const FLOATING_ICONS = [
-  { Icon: Code2, delay: 0, x: '10%', y: '20%', size: 18 },
-  { Icon: Database, delay: 0.5, x: '85%', y: '15%', size: 16 },
-  { Icon: Cpu, delay: 1, x: '90%', y: '60%', size: 20 },
-  { Icon: Globe, delay: 1.5, x: '8%', y: '65%', size: 18 },
-  { Icon: Smartphone, delay: 2, x: '78%', y: '80%', size: 16 },
-  { Icon: Cloud, delay: 2.5, x: '20%', y: '85%', size: 18 },
-];
-
-function TypedText() {
-  const [index, setIndex] = useState(0);
-  const [displayed, setDisplayed] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    const current = TYPED_STRINGS[index];
-    const speed = isDeleting ? 40 : 80;
-    const pause = isDeleting ? 0 : 1800;
-
-    if (!isDeleting && displayed === current) {
-      timeoutRef.current = setTimeout(() => setIsDeleting(true), pause);
-    } else if (isDeleting && displayed === '') {
-      setIsDeleting(false);
-      setIndex((i) => (i + 1) % TYPED_STRINGS.length);
-    } else {
-      timeoutRef.current = setTimeout(() => {
-        setDisplayed(isDeleting ? current.slice(0, displayed.length - 1) : current.slice(0, displayed.length + 1));
-      }, speed);
-    }
-
-    return () => clearTimeout(timeoutRef.current);
-  }, [displayed, isDeleting, index]);
-
-  return (
-    <span className="gradient-text">
-      {displayed}
-      <span className="cursor-blink text-[#ff6b00]">|</span>
-    </span>
-  );
-}
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  const handleScroll = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section
       id="home"
-      ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a] grid-pattern"
+      className="relative overflow-hidden"
+      style={{ background: 'var(--bg)' }}
     >
-      {/* Gradient orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#ff6b00]/8 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#ff8c40]/6 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#ff6b00]/4 rounded-full blur-[80px]" />
-      </div>
+      {/* Subtle grid */}
+      <div className="absolute inset-0 grid-pattern opacity-60 pointer-events-none" />
+      {/* Soft accent wash */}
+      <div
+        className="absolute -top-40 -right-32 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(245,92,26,0.10) 0%, transparent 65%)' }}
+      />
 
-      {/* Radial vignette */}
-      <div className="absolute inset-0 bg-radial-gradient pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #0a0a0a 100%)' }} />
-
-      {/* Floating icons */}
-      {FLOATING_ICONS.map(({ Icon, delay, x, y: iconY, size }, i) => (
+      {/* Floating tech chips */}
+      {FLOATING_BADGES.map(({ Icon, label, x, y }, i) => (
         <motion.div
-          key={i}
-          className="absolute hidden lg:flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.07] backdrop-blur-sm"
-          style={{ left: x, top: iconY }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: delay + 1, duration: 0.5 }}
+          key={label}
+          className="absolute hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
+          style={{
+            left: x,
+            top: y,
+            background: 'var(--card)',
+            border: '1px solid var(--line)',
+            color: 'var(--ink)',
+            boxShadow: '0 12px 30px -18px rgba(28,24,20,0.18)',
+          }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 + i * 0.12, duration: 0.6 }}
         >
-          <motion.div
-            animate={{ y: [0, -8, 0], rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: 'easeInOut', delay: delay }}
-          >
-            <Icon className="text-[#ff6b00]/70" style={{ width: size, height: size }} />
-          </motion.div>
+          <Icon className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
+          {label}
         </motion.div>
       ))}
 
-      {/* Main content */}
-      <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        style={{ y, opacity }}
+      <div className="container-custom relative z-10 pt-16 md:pt-24 pb-20 md:pb-28">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Copy */}
+          <div className="lg:col-span-7">
+            <motion.span
+              className="eyebrow"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              Enterprise software studio
+            </motion.span>
+
+            <motion.h1
+              className="h-display mt-5 text-balance"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              style={{ color: 'var(--ink)' }}
+            >
+              Building reliable software for{' '}
+              <span style={{ color: 'var(--accent)' }}>ambitious businesses.</span>
+            </motion.h1>
+
+            <motion.p
+              className="lede mt-6 max-w-xl text-pretty"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              We design, engineer, and operate web, mobile, and AI products for startups and enterprises —
+              shipped on time, on scope, and built to scale for years.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              className="mt-9 flex flex-wrap items-center gap-3"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.32, duration: 0.6 }}
+            >
+              <Link href="/contact" className="btn-primary">
+                Start Project <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/contact" className="btn-secondary">
+                <CalendarClock className="w-4 h-4" />
+                Book Consultation
+              </Link>
+              <Link href="/outsourcing" className="btn-ghost group">
+                <UsersRound className="w-4 h-4" />
+                Hire Developers
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </motion.div>
+
+            {/* Trust strip */}
+            <motion.div
+              className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs"
+              style={{ color: 'var(--muted)' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
+                NDA-ready engagement
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
+                Senior engineers only
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <CalendarClock className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
+                Two-week delivery cadence
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Dashboard mockup */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+          >
+            <DashboardMock />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DashboardMock() {
+  return (
+    <div className="relative">
+      {/* Halo */}
+      <div
+        className="absolute -inset-6 rounded-[28px] -z-10"
+        style={{ background: 'radial-gradient(60% 60% at 50% 50%, rgba(245,92,26,0.12) 0%, transparent 70%)' }}
+      />
+      <div
+        className="card-flat p-5 md:p-6 shadow-[0_30px_80px_-40px_rgba(28,24,20,0.25)]"
+        style={{ background: 'var(--card)' }}
       >
-        {/* Badge */}
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b00]/10 border border-[#ff6b00]/20 text-[#ff8c40] text-sm font-medium mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
-          Trusted by 50+ Startups & Enterprises
-        </motion.div>
+        {/* Header chrome */}
+        <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#FFB4A0' }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#FFD8A8' }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#C9E4D2' }} />
+          </div>
+          <span className="text-[10px] tracking-widest font-semibold" style={{ color: 'var(--muted)' }}>
+            DELIVERY · LIVE
+          </span>
+        </div>
 
-        {/* Heading */}
-        <motion.h1
-          className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-        >
-          Building Future-Ready
-        </motion.h1>
-        <motion.h1
-          className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8 min-h-[1.15em]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.7 }}
-        >
-          <TypedText />
-        </motion.h1>
-
-        {/* Description */}
-        <motion.p
-          className="text-white/55 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          We design and engineer exceptional digital products — from AI-powered web platforms to
-          cross-platform mobile apps — that drive real business growth.
-        </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.6 }}
-        >
-          <button
-            onClick={() => handleScroll('#contact')}
-            className="group flex items-center gap-2 px-7 py-4 rounded-2xl bg-gradient-to-r from-[#ff6b00] to-[#ff8c40] text-white font-bold text-base shadow-xl shadow-orange-500/25 hover:shadow-orange-500/45 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto justify-center"
-          >
-            Get Started
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
-          <button
-            onClick={() => handleScroll('#services')}
-            className="group flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-white/[0.05] border border-white/[0.1] text-white font-semibold text-base hover:bg-white/[0.08] hover:border-[#ff6b00]/30 transition-all duration-300 w-full sm:w-auto justify-center"
-          >
-            <div className="w-7 h-7 rounded-full bg-[#ff6b00]/15 border border-[#ff6b00]/25 flex items-center justify-center">
-              <Play className="w-3 h-3 text-[#ff6b00] fill-[#ff6b00] translate-x-[1px]" />
-            </div>
-            View Services
-          </button>
-        </motion.div>
-
-        {/* Stats row */}
-        <motion.div
-          className="mt-16 flex flex-wrap items-center justify-center gap-8 lg:gap-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-        >
+        {/* KPI tiles */}
+        <div className="grid grid-cols-3 gap-3">
           {[
-{ value: '5+', label: 'Projects Delivered' },
-{ value: '5+', label: 'Happy Clients' },
-{ value: '2026', label: 'Founded In' },
-{ value: '99%', label: 'Satisfaction Rate' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-black gradient-text">{stat.value}</div>
-              <div className="text-white/40 text-xs font-medium mt-0.5 tracking-wide">{stat.label}</div>
+            { label: 'Sprint velocity', value: '42 pts', delta: '+12%' },
+            { label: 'Bugs in QA', value: '3', delta: '-60%' },
+            { label: 'Uptime', value: '99.97%', delta: '+0.02' },
+          ].map((kpi) => (
+            <div
+              key={kpi.label}
+              className="p-3.5 rounded-xl"
+              style={{ background: 'var(--surface)', border: '1px solid var(--line)' }}
+            >
+              <div className="text-[10px] uppercase tracking-wider" style={{ color: 'var(--muted)' }}>
+                {kpi.label}
+              </div>
+              <div className="mt-1 flex items-baseline justify-between">
+                <span className="text-xl font-semibold" style={{ color: 'var(--ink)' }}>
+                  {kpi.value}
+                </span>
+                <span className="text-[10px] font-semibold" style={{ color: 'var(--accent)' }}>
+                  {kpi.delta}
+                </span>
+              </div>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+        {/* Chart-ish */}
+        <div
+          className="mt-4 h-32 rounded-xl p-3 flex items-end gap-1.5"
+          style={{ background: 'var(--surface)', border: '1px solid var(--line)' }}
+        >
+          {[44, 60, 38, 72, 58, 88, 70, 92, 80, 96, 74, 100].map((h, i) => (
+            <motion.span
+              key={i}
+              className="flex-1 rounded-md"
+              style={{ background: i === 11 ? 'var(--accent)' : 'rgba(245,92,26,0.18)' }}
+              initial={{ height: 0 }}
+              animate={{ height: `${h}%` }}
+              transition={{ delay: 0.4 + i * 0.04, duration: 0.55, ease: 'easeOut' }}
+            />
+          ))}
+        </div>
 
-      
-
-    </section>
+        {/* Squad list */}
+        <div className="mt-4 space-y-2">
+          {[
+            { name: 'Flutter Squad · Logistics', status: 'In Sprint' },
+            { name: 'Next.js Squad · Wholepath', status: 'QA' },
+            { name: 'AI Squad · Northwind', status: 'Eval pass' },
+          ].map((row) => (
+            <div
+              key={row.name}
+              className="flex items-center justify-between px-3.5 py-2.5 rounded-xl"
+              style={{ background: 'var(--surface)', border: '1px solid var(--line)' }}
+            >
+              <span className="text-xs font-medium" style={{ color: 'var(--ink)' }}>
+                {row.name}
+              </span>
+              <span
+                className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                style={{ background: 'var(--accent-soft)', color: 'var(--accent-dark)' }}
+              >
+                {row.status}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

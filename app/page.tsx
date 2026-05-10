@@ -1,39 +1,25 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Services from '@/components/Services';
-import Technologies from '@/components/Technologies';
-import Portfolio from '@/components/Portfolio';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import Testimonials from '@/components/Testimonials';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-
-const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), { ssr: false });
-const CursorGlow = dynamic(() => import('@/components/CursorGlow'), { ssr: false });
-const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'), { ssr: false });
+import Hero from '@/components/sections/Hero';
+import Stats from '@/components/sections/Stats';
+import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import Services from '@/components/sections/Services';
+import Outsourcing from '@/components/sections/Outsourcing';
+import Technologies from '@/components/sections/Technologies';
+import CaseStudies from '@/components/sections/CaseStudies';
+import Testimonials from '@/components/sections/Testimonials';
+import CTA from '@/components/sections/CTA';
 
 export default function Home() {
   return (
     <>
-      <LoadingScreen />
-      <CursorGlow />
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Technologies />
-        <Portfolio />
-        <WhyChooseUs />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
+      <Hero />
+      <Stats />
+      <WhyChooseUs />
+      <Services limit={8} showSeeAll title="Services we deliver, end to end." />
+      <Outsourcing compact />
+      <Technologies />
+      <CaseStudies preview />
+      <Testimonials />
+      <CTA />
     </>
   );
 }

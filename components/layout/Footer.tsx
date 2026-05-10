@@ -1,165 +1,153 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Code as Code2, Twitter, Linkedin, Github, Instagram, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
-import { COMPANY_NAME, COMPANY_EMAIL, COMPANY_PHONE, NAV_LINKS, SERVICES } from '@/lib/constants';
+import Link from 'next/link';
+import { Linkedin, Github, Twitter, Instagram, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import {
+  COMPANY_NAME,
+  COMPANY_EMAIL,
+  COMPANY_PHONE,
+  COMPANY_ADDRESS,
+  FOOTER_SECTIONS,
+  SOCIAL_LINKS,
+} from '@/lib/constants';
 
-const SOCIAL_ICONS = {
-  twitter: Twitter,
+const SOCIAL_ICONS: Record<string, React.ElementType> = {
   linkedin: Linkedin,
   github: Github,
+  twitter: Twitter,
   instagram: Instagram,
 };
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const handleNavClick = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#080808] border-t border-white/[0.05] overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#ff6b00]/5 rounded-full blur-[80px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top CTA bar */}
-        <div className="py-12 border-b border-white/[0.05]">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
-                Ready to build something
-                <span className="gradient-text"> extraordinary?</span>
-              </h2>
-              <p className="text-white/50 mt-1 text-sm">Let's turn your vision into a world-class digital product.</p>
-            </div>
-            <motion.button
-              onClick={() => handleNavClick('#contact')}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff8c40] text-white font-semibold text-sm shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all hover:-translate-y-0.5 whitespace-nowrap"
-              whileTap={{ scale: 0.97 }}
-            >
-              Start a Project
+    <footer className="relative" style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)' }}>
+      <div className="container-custom">
+        {/* CTA bar */}
+        <div className="py-12 md:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+          style={{ borderBottom: '1px solid var(--line)' }}>
+          <div className="max-w-xl">
+            <h3 className="text-2xl md:text-3xl font-semibold leading-tight" style={{ color: 'var(--ink)' }}>
+              Ready to build something serious?
+            </h3>
+            <p className="mt-2 lede">Tell us about your project — we&apos;ll come back within one business day.</p>
+          </div>
+          <div className="flex items-center gap-3 flex-wrap">
+            <Link href="/contact" className="btn-primary">
+              Start Project
               <ArrowUpRight className="w-4 h-4" />
-            </motion.button>
+            </Link>
+            <Link href="/careers" className="btn-secondary">
+              Open Roles
+            </Link>
           </div>
         </div>
 
-        {/* Main footer grid */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand column */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#ff6b00] to-[#ff8c40] flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-white" strokeWidth={2.5} />
-              </div>
-              <span className="text-white font-bold text-lg">
-                Coden<span className="gradient-text">trixa</span>
+        {/* Main columns */}
+        <div className="py-12 md:py-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-2 max-w-sm">
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <span className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'var(--accent)' }}>
+                <span className="text-white font-bold text-sm">C</span>
               </span>
-            </div>
-            <p className="text-white/45 text-sm leading-relaxed mb-6">
-              Building future-ready digital solutions for startups and enterprises. We ship products that scale, perform, and impress.
+              <span className="font-semibold text-[1.05rem]" style={{ color: 'var(--ink)' }}>
+                {COMPANY_NAME.slice(0, 4)}
+                <span style={{ color: 'var(--accent)' }}>{COMPANY_NAME.slice(4)}</span>
+              </span>
+            </Link>
+            <p className="mt-5 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+              An enterprise software studio building production web, mobile, and AI products for startups and growing
+              businesses. Remote-first since day one.
             </p>
-            <div className="flex items-center gap-2.5">
-              {(['twitter', 'linkedin', 'github', 'instagram'] as const).map((social) => {
-                const Icon = SOCIAL_ICONS[social];
+
+            <ul className="mt-6 space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <Mail className="w-4 h-4 mt-0.5" style={{ color: 'var(--accent)' }} />
+                <a href={`mailto:${COMPANY_EMAIL}`} className="hover:underline" style={{ color: 'var(--ink)' }}>
+                  {COMPANY_EMAIL}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 mt-0.5" style={{ color: 'var(--accent)' }} />
+                <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="hover:underline" style={{ color: 'var(--ink)' }}>
+                  {COMPANY_PHONE}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 mt-0.5" style={{ color: 'var(--accent)' }} />
+                <span style={{ color: 'var(--ink)' }}>{COMPANY_ADDRESS}</span>
+              </li>
+            </ul>
+          </div>
+
+          <FooterColumn title="Services" items={FOOTER_SECTIONS.services} />
+          <FooterColumn title="Technologies" items={FOOTER_SECTIONS.technologies} />
+          <FooterColumn title="Company" items={FOOTER_SECTIONS.company} />
+        </div>
+
+        {/* Bottom bar */}
+        <div className="py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+          style={{ borderTop: '1px solid var(--line)' }}>
+          <p className="text-xs" style={{ color: 'var(--muted)' }}>
+            © {year} {COMPANY_NAME}. All rights reserved.
+          </p>
+          <div className="flex items-center gap-5 flex-wrap">
+            {FOOTER_SECTIONS.legal.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="text-xs hover:underline"
+                style={{ color: 'var(--muted)' }}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <div className="flex items-center gap-2">
+              {SOCIAL_LINKS.map((s) => {
+                const Icon = SOCIAL_ICONS[s.icon];
                 return (
                   <a
-                    key={social}
-                    href="#"
-                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/[0.07] flex items-center justify-center text-white/50 hover:text-[#ff6b00] hover:border-[#ff6b00]/30 hover:bg-[#ff6b00]/5 transition-all duration-200"
-                    aria-label={social}
+                    key={s.name}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={s.name}
+                    className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+                    style={{ background: 'var(--card)', border: '1px solid var(--line)', color: 'var(--ink)' }}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-3.5 h-3.5" />
                   </a>
                 );
               })}
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Quick Links</h3>
-            <ul className="space-y-2.5">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
-                    className="text-white/45 hover:text-[#ff6b00] text-sm transition-colors duration-200 flex items-center gap-1.5 group"
-                  >
-                    <span className="w-0 group-hover:w-3 h-[1px] bg-[#ff6b00] transition-all duration-200" />
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Services</h3>
-            <ul className="space-y-2.5">
-              {SERVICES.slice(0, 6).map((service) => (
-                <li key={service.id}>
-                  <span className="text-white/45 hover:text-[#ff6b00] text-sm transition-colors duration-200 cursor-default block">
-                    {service.title}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Contact</h3>
-            <ul className="space-y-4">
-              <li>
-                <a href={`mailto:${COMPANY_EMAIL}`} className="flex items-start gap-3 group">
-                  <div className="w-8 h-8 rounded-lg bg-[#ff6b00]/10 border border-[#ff6b00]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Mail className="w-3.5 h-3.5 text-[#ff6b00]" />
-                  </div>
-                  <span className="text-white/45 group-hover:text-[#ff6b00] text-sm transition-colors duration-200 break-all">
-                    {COMPANY_EMAIL}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href={`tel:${COMPANY_PHONE}`} className="flex items-start gap-3 group">
-                  <div className="w-8 h-8 rounded-lg bg-[#ff6b00]/10 border border-[#ff6b00]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Phone className="w-3.5 h-3.5 text-[#ff6b00]" />
-                  </div>
-                  <span className="text-white/45 group-hover:text-[#ff6b00] text-sm transition-colors duration-200">
-                    {COMPANY_PHONE}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#ff6b00]/10 border border-[#ff6b00]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#ff6b00]" />
-                  </div>
-                  <span className="text-white/45 text-sm">San Francisco, CA</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="py-5 border-t border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/30 text-xs">
-            © {currentYear} {COMPANY_NAME}. All rights reserved.
-          </p>
-          {/* <div className="flex items-center gap-4">
-            {['Privacy Policy', 'Terms of Service', 'Cookies'].map((item) => (
-              <a key={item} href="#" className="text-white/30 hover:text-white/60 text-xs transition-colors duration-200">
-                {item}
-              </a>
-            ))}
-          </div> */}
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({ title, items }: { title: string; items: { label: string; href: string }[] }) {
+  return (
+    <div>
+      <h4 className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style={{ color: 'var(--muted)' }}>
+        {title}
+      </h4>
+      <ul className="space-y-2.5">
+        {items.map((item) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className="text-sm transition-colors hover:opacity-100"
+              style={{ color: 'var(--ink)', opacity: 0.78 }}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
