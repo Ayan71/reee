@@ -122,7 +122,7 @@ export default function Footer() {
             © {year} {COMPANY_NAME}. All rights reserved.
           </p>
           <div className="flex items-center gap-5 flex-wrap">
-            {FOOTER_SECTIONS.legal.map((l) => (
+            {FOOTER_SECTIONS.legal.map((l: { label: string; href: string }) => (
               <Link
                 key={l.href}
                 href={l.href}
