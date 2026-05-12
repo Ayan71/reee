@@ -477,10 +477,10 @@ export const OPEN_POSITIONS = [
 // ─────────────────────────────  Social  ──────────────────────────────────
 
 export const SOCIAL_LINKS = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/', icon: 'linkedin' },
-  { name: 'GitHub', href: 'https://github.com/', icon: 'github' },
-  { name: 'Twitter', href: 'https://twitter.com/', icon: 'twitter' },
-  { name: 'Instagram', href: 'https://instagram.com/', icon: 'instagram' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/codentrixa', icon: 'linkedin' },
+  // { name: 'GitHub', href: 'https://github.com/', icon: 'github' },
+  { name: 'Twitter', href: 'https://x.com/codentrixa47574', icon: 'twitter' },
+  // { name: 'Instagram', href: 'https://instagram.com/', icon: 'instagram' },
 ];
 
 // ─────────────────────────────  Footer Sections  ─────────────────────────
@@ -509,7 +509,7 @@ export const FOOTER_SECTIONS = {
     { label: 'Contact', href: '/contact' },
   ],
   legal: [
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms & Conditions', href: '/terms' },
+    // { label: 'Privacy Policy', href: '/privacy' },
+    // { label: 'Terms & Conditions', href: '/terms' },
   ],
 };

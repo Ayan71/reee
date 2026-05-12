@@ -15,6 +15,12 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} | Enterprise Software Studio`,
     template: `%s | ${SITE_NAME}`,
   },
+    icons: {
+    icon: '/codentrixa_logo_black_bg.png',
+    shortcut: '/codentrixa_logo_black_bg.png',
+    apple: '/codentrixa_logo_black_bg.png',
+  },
+
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],

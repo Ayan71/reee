@@ -50,7 +50,7 @@ export default function Home() {
       <Outsourcing compact />
       <Technologies />
       <CaseStudies preview />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <CTA />
     </>
   );
