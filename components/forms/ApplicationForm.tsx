@@ -16,19 +16,35 @@ const Schema = z.object({
   portfolio: z
     .string()
     .min(1, 'A portfolio or LinkedIn URL is required.')
-    .refine((v) => /^https?:\/\//i.test(v), 'Include https:// in front of the URL.'),
+    .refine(
+      (v) => /^https?:\/\//i.test(v),
+      'Include https:// in front of the URL.'
+    ),
   resumeName: z.string().min(1, 'Please attach your resume (PDF or DOCX).'),
-  message: z.string().max(800, 'Keep this under 800 characters.').optional(),
+  message: z
+    .string()
+    .max(800, 'Keep this under 800 characters.')
+    .optional(),
 });
 
 type FormValues = z.infer<typeof Schema>;
 
-const EXPERIENCE_LEVELS = ['0–1 years', '2–3 years', '4–6 years', '7+ years'];
+const EXPERIENCE_LEVELS = [
+  '0–1 years',
+  '2–3 years',
+  '4–6 years',
+  '7+ years',
+];
 
-type Props = { defaultPosition?: string };
+type Props = {
+  defaultPosition?: string;
+};
 
-export default function ApplicationForm({ defaultPosition }: Props) {
+export default function ApplicationForm({
+  defaultPosition,
+}: Props) {
   const { toast } = useToast();
+
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -54,17 +70,43 @@ export default function ApplicationForm({ defaultPosition }: Props) {
   const resumeName = watch('resumeName');
 
   const onSubmit = async (values: FormValues) => {
-    // Client-side stub: simulate latency, then show success.
-    await new Promise((r) => setTimeout(r, 900));
+    console.log("yes call api")
+    try {
+      const response = await fetch('/api/form-submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...values,
+          type: 'job',
+        }),
+      });
 
-    // eslint-disable-next-line no-console
-    console.log('Application submitted', values);
-    toast({
-      title: 'Application received',
-      description: 'Thanks — we’ll review and get back within 5 business days.',
-    });
-    setSubmitted(true);
-    reset();
+      const data = await response.json(); 
+        console.log("data", data)
+
+      if (!data.success) {
+        throw new Error('Failed to submit application');
+      }
+
+      toast({
+        title: 'Application received',
+        description:
+          'Thanks — we’ll review and get back within 5 business days.',
+      });
+
+      setSubmitted(true);
+      reset();
+    } catch (error) {
+      console.error(error);
+
+      toast({
+        title: 'Something went wrong',
+        description: 'Please try again later.',
+        variant: 'destructive',
+      });
+    }
   };
 
   if (submitted) {
@@ -74,14 +116,27 @@ export default function ApplicationForm({ defaultPosition }: Props) {
           className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
           style={{ background: 'var(--accent-soft)' }}
         >
-          <CheckCircle2 className="w-6 h-6" style={{ color: 'var(--accent)' }} />
+          <CheckCircle2
+            className="w-6 h-6"
+            style={{ color: 'var(--accent)' }}
+          />
         </div>
-        <h3 className="text-xl font-semibold" style={{ color: 'var(--ink)' }}>
+
+        <h3
+          className="text-xl font-semibold"
+          style={{ color: 'var(--ink)' }}
+        >
           Application received
         </h3>
-        <p className="mt-2 text-sm" style={{ color: 'var(--muted)' }}>
-          Thanks for applying. We review every application and reply within five business days.
+
+        <p
+          className="mt-2 text-sm"
+          style={{ color: 'var(--muted)' }}
+        >
+          Thanks for applying. We review every application and
+          reply within five business days.
         </p>
+
         <button
           type="button"
           onClick={() => setSubmitted(false)}
@@ -94,7 +149,11 @@ export default function ApplicationForm({ defaultPosition }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card-surface p-6 md:p-8 space-y-5" noValidate>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="card-surface p-6 md:p-8 space-y-5"
+      noValidate
+    >
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Full name" error={errors.name?.message}>
           <input
@@ -105,6 +164,7 @@ export default function ApplicationForm({ defaultPosition }: Props) {
             className="form-input"
           />
         </Field>
+
         <Field label="Email" error={errors.email?.message}>
           <input
             type="email"
@@ -118,19 +178,31 @@ export default function ApplicationForm({ defaultPosition }: Props) {
 
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Position" error={errors.position?.message}>
-          <select {...register('position')} className="form-input">
+          <select
+            {...register('position')}
+            className="form-input"
+          >
             <option value="">Select a role…</option>
+
             {OPEN_POSITIONS.map((p) => (
               <option key={p.slug} value={p.title}>
                 {p.title}
               </option>
             ))}
-            <option value="Other">Other / open application</option>
+
+            <option value="Other">
+              Other / open application
+            </option>
           </select>
         </Field>
+
         <Field label="Experience" error={errors.experience?.message}>
-          <select {...register('experience')} className="form-input">
+          <select
+            {...register('experience')}
+            className="form-input"
+          >
             <option value="">Select level…</option>
+
             {EXPERIENCE_LEVELS.map((e) => (
               <option key={e} value={e}>
                 {e}
@@ -140,7 +212,10 @@ export default function ApplicationForm({ defaultPosition }: Props) {
         </Field>
       </div>
 
-      <Field label="Portfolio / LinkedIn URL" error={errors.portfolio?.message}>
+      <Field
+        label="Portfolio / LinkedIn URL"
+        error={errors.portfolio?.message}
+      >
         <input
           type="url"
           placeholder="https://linkedin.com/in/your-profile"
@@ -152,30 +227,54 @@ export default function ApplicationForm({ defaultPosition }: Props) {
       <Field label="Resume" error={errors.resumeName?.message}>
         <label
           className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-md cursor-pointer text-sm transition-colors"
-          style={{ background: 'var(--bg)', border: '1px solid var(--line)', color: 'var(--ink)' }}
+          style={{
+            background: 'var(--bg)',
+            border: '1px solid var(--line)',
+            color: 'var(--ink)',
+          }}
         >
-          <span style={{ color: resumeName ? 'var(--ink)' : 'var(--muted)' }}>
-            {resumeName || 'Attach a PDF or DOCX (max 5 MB)'}
+          <span
+            style={{
+              color: resumeName
+                ? 'var(--ink)'
+                : 'var(--muted)',
+            }}
+          >
+            {resumeName ||
+              'Attach a PDF or DOCX (max 5 MB)'}
           </span>
+
           <span
             className="text-xs font-semibold px-3 py-1.5 rounded-md"
-            style={{ background: 'var(--accent-soft)', color: 'var(--accent-dark)' }}
+            style={{
+              background: 'var(--accent-soft)',
+              color: 'var(--accent-dark)',
+            }}
           >
             Browse
           </span>
+
           <input
             type="file"
             accept=".pdf,.doc,.docx"
             className="hidden"
             onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) setValue('resumeName', f.name, { shouldValidate: true });
+              const file = e.target.files?.[0];
+
+              if (file) {
+                setValue('resumeName', file.name, {
+                  shouldValidate: true,
+                });
+              }
             }}
           />
         </label>
       </Field>
 
-      <Field label="Anything else? (optional)" error={errors.message?.message}>
+      <Field
+        label="Anything else? (optional)"
+        error={errors.message?.message}
+      >
         <textarea
           rows={4}
           placeholder="Tell us briefly why you’re a fit."
@@ -184,20 +283,30 @@ export default function ApplicationForm({ defaultPosition }: Props) {
         />
       </Field>
 
-      <button type="submit" disabled={isSubmitting} className="btn-primary w-full sm:w-auto">
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="btn-primary w-full sm:w-auto"
+      >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" /> Submitting…
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Submitting…
           </>
         ) : (
           <>
-            Submit application <Send className="w-4 h-4" />
+            Submit application
+            <Send className="w-4 h-4" />
           </>
         )}
       </button>
 
-      <p className="text-xs" style={{ color: 'var(--muted)' }}>
-        By submitting, you agree to our privacy policy. We never share applications with third parties.
+      <p
+        className="text-xs"
+        style={{ color: 'var(--muted)' }}
+      >
+        By submitting, you agree to our privacy policy.
+        We never share applications with third parties.
       </p>
     </form>
   );
@@ -214,12 +323,20 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-xs font-semibold tracking-[0.12em] uppercase mb-1.5" style={{ color: 'var(--muted)' }}>
+      <span
+        className="block text-xs font-semibold tracking-[0.12em] uppercase mb-1.5"
+        style={{ color: 'var(--muted)' }}
+      >
         {label}
       </span>
+
       {children}
+
       {error && (
-        <span className="mt-1 block text-xs font-medium" style={{ color: '#C8420A' }}>
+        <span
+          className="mt-1 block text-xs font-medium"
+          style={{ color: '#C8420A' }}
+        >
           {error}
         </span>
       )}

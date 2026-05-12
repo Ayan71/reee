@@ -11,8 +11,12 @@ const Schema = z.object({
   name: z.string().min(2, 'Please enter your full name.'),
   email: z.string().email('Enter a valid email address.'),
   company: z.string().optional(),
-  budget: z.string().min(1, 'Pick a budget range so we can match the right team.'),
-  service: z.string().min(1, 'Pick the service you’re interested in.'),
+  budget: z
+    .string()
+    .min(1, 'Pick a budget range so we can match the right team.'),
+  service: z
+    .string()
+    .min(1, 'Pick the service you’re interested in.'),
   message: z
     .string()
     .min(20, 'Tell us a little more — at least 20 characters.')
@@ -46,6 +50,7 @@ const BUDGETS = [
 
 export default function InquiryForm() {
   const { toast } = useToast();
+
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -66,16 +71,41 @@ export default function InquiryForm() {
   });
 
   const onSubmit = async (values: FormValues) => {
-    await new Promise((r) => setTimeout(r, 900));
+    try {
+      const response = await fetch('/api/form-submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...values,
+          type: 'inquiry',
+        }),
+      });
 
-    // eslint-disable-next-line no-console
-    console.log('Inquiry submitted', values);
-    toast({
-      title: 'Message received',
-      description: 'Thanks — we’ll be in touch within one business day.',
-    });
-    setSubmitted(true);
-    reset();
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error('Failed to send inquiry');
+      }
+
+      toast({
+        title: 'Message received',
+        description:
+          'Thanks — we’ll be in touch within one business day.',
+      });
+
+      setSubmitted(true);
+      reset();
+    } catch (error) {
+      console.error(error);
+
+      toast({
+        title: 'Something went wrong',
+        description: 'Please try again later.',
+        variant: 'destructive',
+      });
+    }
   };
 
   if (submitted) {
@@ -85,15 +115,31 @@ export default function InquiryForm() {
           className="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
           style={{ background: 'var(--accent-soft)' }}
         >
-          <CheckCircle2 className="w-6 h-6" style={{ color: 'var(--accent)' }} />
+          <CheckCircle2
+            className="w-6 h-6"
+            style={{ color: 'var(--accent)' }}
+          />
         </div>
-        <h3 className="text-xl font-semibold" style={{ color: 'var(--ink)' }}>
+
+        <h3
+          className="text-xl font-semibold"
+          style={{ color: 'var(--ink)' }}
+        >
           Thanks — we got your message.
         </h3>
-        <p className="mt-2 text-sm" style={{ color: 'var(--muted)' }}>
-          A delivery lead will reply within one business day with a discovery slot or follow-up questions.
+
+        <p
+          className="mt-2 text-sm"
+          style={{ color: 'var(--muted)' }}
+        >
+          A delivery lead will reply within one business day.
         </p>
-        <button type="button" onClick={() => setSubmitted(false)} className="btn-secondary mt-6">
+
+        <button
+          type="button"
+          onClick={() => setSubmitted(false)}
+          className="btn-secondary mt-6"
+        >
           Send another inquiry
         </button>
       </div>
@@ -101,7 +147,11 @@ export default function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card-surface p-6 md:p-8 space-y-5" noValidate>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="card-surface p-6 md:p-8 space-y-5"
+      noValidate
+    >
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Your name" error={errors.name?.message}>
           <input
@@ -112,6 +162,7 @@ export default function InquiryForm() {
             className="form-input"
           />
         </Field>
+
         <Field label="Work email" error={errors.email?.message}>
           <input
             type="email"
@@ -123,7 +174,10 @@ export default function InquiryForm() {
         </Field>
       </div>
 
-      <Field label="Company (optional)" error={errors.company?.message}>
+      <Field
+        label="Company (optional)"
+        error={errors.company?.message}
+      >
         <input
           type="text"
           placeholder="Company or product name"
@@ -133,52 +187,72 @@ export default function InquiryForm() {
       </Field>
 
       <div className="grid sm:grid-cols-2 gap-4">
-        <Field label="What do you need?" error={errors.service?.message}>
-          <select {...register('service')} className="form-input">
+        <Field
+          label="What do you need?"
+          error={errors.service?.message}
+        >
+          <select
+            {...register('service')}
+            className="form-input"
+          >
             <option value="">Pick a service…</option>
-            {SERVICES.map((s) => (
-              <option key={s} value={s}>
-                {s}
+
+            {SERVICES.map((service) => (
+              <option key={service} value={service}>
+                {service}
               </option>
             ))}
           </select>
         </Field>
-        <Field label="Budget range" error={errors.budget?.message}>
-          <select {...register('budget')} className="form-input">
+
+        <Field
+          label="Budget range"
+          error={errors.budget?.message}
+        >
+          <select
+            {...register('budget')}
+            className="form-input"
+          >
             <option value="">Pick a budget…</option>
-            {BUDGETS.map((b) => (
-              <option key={b} value={b}>
-                {b}
+
+            {BUDGETS.map((budget) => (
+              <option key={budget} value={budget}>
+                {budget}
               </option>
             ))}
           </select>
         </Field>
       </div>
 
-      <Field label="Tell us about the project" error={errors.message?.message}>
+      <Field
+        label="Tell us about the project"
+        error={errors.message?.message}
+      >
         <textarea
           rows={5}
-          placeholder="What are you building? What does success look like? Any deadlines we should know about?"
+          placeholder="What are you building?"
           {...register('message')}
           className="form-input resize-none"
         />
       </Field>
 
-      <button type="submit" disabled={isSubmitting} className="btn-primary w-full sm:w-auto">
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="btn-primary w-full sm:w-auto"
+      >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" /> Sending…
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Sending…
           </>
         ) : (
           <>
-            Send inquiry <Send className="w-4 h-4" />
+            Send inquiry
+            <Send className="w-4 h-4" />
           </>
         )}
       </button>
-
-      <p className="text-xs" style={{ color: 'var(--muted)' }}>
-        We sign NDAs upfront. Your details stay private and are never shared with third parties.
-      </p>
     </form>
   );
 }
@@ -200,9 +274,14 @@ function Field({
       >
         {label}
       </span>
+
       {children}
+
       {error && (
-        <span className="mt-1 block text-xs font-medium" style={{ color: '#C8420A' }}>
+        <span
+          className="mt-1 block text-xs font-medium"
+          style={{ color: '#C8420A' }}
+        >
           {error}
         </span>
       )}
