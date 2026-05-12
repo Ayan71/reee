@@ -70,7 +70,6 @@ export default function ApplicationForm({
   const resumeName = watch('resumeName');
 
   const onSubmit = async (values: FormValues) => {
-    console.log("yes call api")
     try {
       const response = await fetch('/api/form-submit', {
         method: 'POST',
@@ -84,7 +83,7 @@ export default function ApplicationForm({
       });
 
       const data = await response.json(); 
-        console.log("data", data)
+        
 
       if (!data.success) {
         throw new Error('Failed to submit application');
