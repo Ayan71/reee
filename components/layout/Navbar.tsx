@@ -135,7 +135,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
             />
             <motion.aside
-              className="absolute top-0 right-0 bottom-0 w-[80vw] max-w-sm flex flex-col p-6"
+              className="absolute top-0 right-0 bottom-0 w-[80vw] max-w-sm flex flex-col p-6 pt-12"
               style={{
                 background: "var(--bg)",
                 borderLeft: "1px solid var(--line)",
