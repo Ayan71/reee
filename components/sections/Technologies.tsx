@@ -82,18 +82,23 @@ export default function Technologies() {
           <span>
             Looking for a deep dive?
           </span>
-          <div className="flex flex-wrap gap-2">
-            {TECH_DETAIL_SLUGS.map((s) => (
-              <Link
-                key={s}
-                href={`/technologies/${s}`}
-                className="text-sm font-medium hover:underline"
-                style={{ color: 'var(--accent)' }}
-              >
-                {s.replace(/-/g, ' ')}
-              </Link>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-2">
+  {TECH_DETAIL_SLUGS.map((s, index) => (
+    <span key={s} className="text-sm font-medium">
+      <Link
+        href={`/technologies/${s}`}
+        className="hover:underline"
+        style={{ color: 'var(--accent)' }}
+      >
+        {s
+          .replace(/-/g, ' ')
+          .replace(/\b\w/g, (char) => char.toUpperCase())}
+      </Link>
+
+      {index !== TECH_DETAIL_SLUGS.length - 1 && ', '}
+    </span>
+  ))}
+</div>
         </div>
       </div>
     </section>
