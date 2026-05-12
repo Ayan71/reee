@@ -16,7 +16,7 @@ export const NAV_LINKS: { label: string; href: string }[] = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Outsourcing', href: '/outsourcing' },
-  { label: 'Technologies', href: '/#technologies' },
+  { label: 'Technologies', href: '/techno' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
