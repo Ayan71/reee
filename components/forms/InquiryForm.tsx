@@ -71,7 +71,7 @@ export default function InquiryForm() {
   });
 
   const onSubmit = async (values: FormValues) => {
-        console.log("yes call api")
+    
     try {
       const response = await fetch('/api/form-submit', {
         method: 'POST',
@@ -85,7 +85,7 @@ export default function InquiryForm() {
       });
 
       const data = await response.json();
-console.log("data", data)
+
       if (!data.success) {
         throw new Error('Failed to send inquiry');
       }
