@@ -51,34 +51,34 @@ export default function ContactPage() {
                 href={`mailto:${COMPANY_EMAIL}`}
                 hint="We reply within one business day."
               />
-              <ContactRow
+              {/* <ContactRow
                 icon={Phone}
                 title="Call us"
                 value={COMPANY_PHONE}
                 href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`}
                 hint="Mon–Fri, 9–6 PT."
-              />
-              <ContactRow
+              /> */}
+              {/* <ContactRow
                 icon={MessageCircle}
                 title="WhatsApp"
                 value="Chat with us"
                 href={whatsappLink}
                 external
                 hint="Fastest for quick questions."
-              />
-              <ContactRow
+              /> */}
+              {/* <ContactRow
                 icon={CalendarClock}
                 title="Book a consultation"
                 value="30-minute discovery call"
                 href={`mailto:${COMPANY_EMAIL}?subject=Consultation%20request`}
                 hint="Free, no sales pitch."
-              />
-              <ContactRow
+              /> */}
+              {/* <ContactRow
                 icon={MapPin}
                 title="Headquarters"
                 value={COMPANY_ADDRESS}
                 hint="Remote-first — overlap with US, EU, APAC."
-              />
+              /> */}
 
               {/* Social */}
               <div className="card-flat p-5">
@@ -114,7 +114,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map placeholder */}
-      <section className="pb-20 md:pb-28" style={{ background: 'var(--bg)' }}>
+      {/* <section className="pb-20 md:pb-28" style={{ background: 'var(--bg)' }}>
         <div className="container-custom">
           <div
             className="rounded-[20px] overflow-hidden card-flat aspect-[16/6] flex items-center justify-center relative"
@@ -140,7 +140,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

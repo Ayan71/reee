@@ -146,31 +146,21 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
             >
               <div className="flex items-center justify-between mb-8">
-                <Link href="/" className="flex items-center gap-2.5">
-                  <span
-                    className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: "var(--accent)" }}
-                  >
-                    <span className="text-white font-bold text-sm">C</span>
-                  </span>
-                  <span
-                    className="font-semibold text-[1.05rem]"
-                    style={{ color: "var(--ink)" }}
-                  >
-                    {COMPANY_NAME.slice(0, 4)}
-                    <span style={{ color: "var(--accent)" }}>
-                      {COMPANY_NAME.slice(4)}
-                    </span>
-                  </span>
-                </Link>
-                <button
+                {/* <Link href="/" className="flex items-center gap-2.5">
+                  <img
+                    src="/codentrixa.png"
+                    alt={`${COMPANY_NAME} logo`}
+                    className="h-[3.4rem] w-auto"
+                  />
+                </Link> */}
+                {/* <button
                   onClick={() => setMenuOpen(false)}
                   aria-label="Close menu"
                   className="w-8 h-8 flex items-center justify-center rounded-lg"
                   style={{ background: "var(--surface)", color: "var(--ink)" }}
                 >
                   <X className="w-4 h-4" />
-                </button>
+                </button> */}
               </div>
               <nav className="flex flex-col gap-1 flex-1">
                 {NAV_LINKS.map((link, i) => {
