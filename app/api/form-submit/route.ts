@@ -9,7 +9,7 @@ export async function POST(req: Request) {
       service: "gmail",
       auth: {
         user: "codentrixa.services@gmail.com",
-        pass: "dhko aazp iwmr mmxw",
+        pass: "uisj dznx psdo zkso",
       },
     });
 
