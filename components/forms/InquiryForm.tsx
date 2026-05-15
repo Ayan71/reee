@@ -73,7 +73,7 @@ export default function InquiryForm() {
   const onSubmit = async (values: FormValues) => {
     
     try {
-      const response = await fetch('/api/form-submit', {
+      const response = await fetch('https://codentrixa-backend.vercel.app/send-mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
