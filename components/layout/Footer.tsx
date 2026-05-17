@@ -50,16 +50,12 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-3 lg:col-span-2 max-w-sm">
             <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
-                src="/codentrixa_mark.png"
-                alt={`${COMPANY_NAME} logomark`}
-                width={40}
-                height={40}
-                className="w-10 h-10 object-contain"
-              />
-              <span className="font-semibold text-[1.05rem]" style={{ color: 'var(--ink)' }}>
-                {COMPANY_NAME.slice(0, 4)}
-                <span style={{ color: 'var(--accent)' }}>{COMPANY_NAME.slice(4)}</span>
-              </span>
+  src="/codentrixa_mark.png"
+  alt={`${COMPANY_NAME} logomark`}
+  width={100}
+  height={100}
+  className="w-[100px] h-[100px] object-contain"
+/>
             </Link>
             <p className="mt-5 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
               An enterprise software studio building production web, mobile, and AI products for startups and growing
