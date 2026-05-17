@@ -98,19 +98,15 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-[72px]">
             {/* Brand */}
             <Link href="/" className="flex items-center gap-2.5 group" aria-label={`${COMPANY_NAME} home`}>
-              <span className="relative w-10 h-10 inline-flex items-center justify-center">
+              <span className="relative w-[90px] h-[90px] inline-flex items-center justify-center">
                 <Image
                   src="/codentrixa_mark.png"
                   alt={`${COMPANY_NAME} logomark`}
-                  width={40}
-                  height={40}
+                  width={50}
+                  height={50}
                   priority
-                  className="w-10 h-10 object-contain"
+                  className=" w-[120px] h-[120]  object-contain"
                 />
-              </span>
-              <span className="font-semibold text-[1.05rem] tracking-tight" style={{ color: 'var(--ink)' }}>
-                {COMPANY_NAME.slice(0, 4)}
-                <span style={{ color: 'var(--accent)' }}>{COMPANY_NAME.slice(4)}</span>
               </span>
             </Link>
 
