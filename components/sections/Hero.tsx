@@ -15,10 +15,10 @@ import {
 } from 'lucide-react';
 
 const FLOATING_BADGES = [
-  { Icon: Code2, label: 'TypeScript', x: '4%', y: '14%' },
-  { Icon: Smartphone, label: 'Flutter', x: '92%', y: '20%' },
-  { Icon: Cpu, label: 'AI / RAG', x: '6%', y: '78%' },
-  { Icon: Cloud, label: 'AWS', x: '90%', y: '74%' },
+  { Icon: Code2, label: 'MERN · React', x: '4%', y: '14%' },
+  { Icon: Smartphone, label: 'Cross-platform', x: '92%', y: '20%' },
+  { Icon: Cpu, label: 'AI-powered backend', x: '6%', y: '78%' },
+  { Icon: Cloud, label: 'AWS · Node.js', x: '90%', y: '74%' },
 ];
 
 export default function Hero() {
@@ -68,7 +68,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
             >
-              Enterprise software studio
+              AI development & custom software company
             </motion.span>
 
             <motion.h1
@@ -78,8 +78,8 @@ export default function Hero() {
               transition={{ delay: 0.1, duration: 0.6 }}
               style={{ color: 'var(--ink)' }}
             >
-              Building reliable software for{' '}
-              <span style={{ color: 'var(--accent)' }}>ambitious businesses.</span>
+              AI-powered software, engineered for{' '}
+              <span style={{ color: 'var(--accent)' }}>global teams.</span>
             </motion.h1>
 
             <motion.p
@@ -88,8 +88,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              We design, engineer, and operate web, mobile, and AI products for startups and enterprises —
-              shipped on time, on scope, and built to scale for years.
+              We build AI-powered backends, MERN-stack web platforms, React apps, and cross-platform
+              mobile products for clients across the USA, UK, Europe, Switzerland, Dubai, and Singapore —
+              shipped by senior engineers on a two-week delivery cadence.
             </motion.p>
 
             {/* CTAs */}

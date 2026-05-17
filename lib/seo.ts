@@ -6,9 +6,24 @@ import type { Metadata } from 'next';
 
 export const SITE_URL = 'https://codentrixa.com';
 export const SITE_NAME = 'Codentrixa';
+/**
+ * Site description optimized for international SEO + AI search engines
+ * (ChatGPT, Perplexity, Gemini, Google AI Overviews). High-intent NLP
+ * keywords are folded in naturally: AI development, MERN, React, Node.js,
+ * cross-platform mobile, enterprise software, USA / Europe / UAE / Asia.
+ */
 export const SITE_DESCRIPTION =
-  'Enterprise software studio building production web, mobile, and AI products. Senior engineers, monthly engagement models, and long-term outsourcing partnerships.';
+  'Codentrixa is a global AI development and custom software company building AI-powered backends, MERN stack web platforms, React applications, and cross-platform mobile apps for startups and enterprises across the USA, UK, Europe, Switzerland, Germany, Dubai, Singapore, and Australia. Custom software, SaaS, generative AI, OpenAI integration, and AI agent development — engineered by senior remote engineers.';
 export const DEFAULT_OG_IMAGE = '/og-default.png';
+
+/**
+ * Canonical region keys used for hreflang, country landing pages, and
+ * targeted JSON-LD. Add new keys here so every consumer stays in sync.
+ */
+export const TARGET_REGIONS = [
+  'us', 'uk', 'eu', 'de', 'ch', 'lu', 'nl', 'fr', 'ca', 'au', 'ae', 'sg',
+] as const;
+export type TargetRegion = (typeof TARGET_REGIONS)[number];
 
 type BuildMetaOptions = {
   /** Page-specific title — combined with the site title via the template. */

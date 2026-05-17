@@ -7,21 +7,33 @@ import Outsourcing from '@/components/sections/Outsourcing';
 import Technologies from '@/components/sections/Technologies';
 import CaseStudies from '@/components/sections/CaseStudies';
 import Testimonials from '@/components/sections/Testimonials';
+import FAQAI from '@/components/sections/FAQAI';
 import CTA from '@/components/sections/CTA';
 import JsonLd from '@/components/seo/JsonLd';
-import { buildMetadata } from '@/lib/seo';
+import { buildMetadata, faqLd } from '@/lib/seo';
+import { HOME_FAQS } from '@/lib/faqs';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Codentrixa | Enterprise Software Studio',
+  title:
+    'AI Development & Custom Software Company | MERN, React, Cross-Platform Mobile | Codentrixa',
   description:
-    'We design, engineer, and operate web, mobile, and AI products for startups and enterprises — shipped on time, on scope, and built to scale for years.',
+    'Codentrixa is a global AI development and custom software company building AI-powered backends, MERN stack web apps, React platforms, and cross-platform mobile apps for clients in the USA, UK, Germany, Switzerland, Netherlands, Dubai, Singapore, and across Europe.',
   path: '/',
   keywords: [
-    'enterprise software development',
-    'software development company',
-    'IT outsourcing',
-    'dedicated developers',
-    'Flutter, React, Node, AI development',
+    'AI development company',
+    'custom software development company',
+    'MERN stack development company',
+    'React JS development company',
+    'cross-platform mobile app development',
+    'AI-powered backend',
+    'full stack web development USA',
+    'SaaS development company Europe',
+    'AI development company Switzerland',
+    'AI automation agency Luxembourg',
+    'OpenAI integration services',
+    'generative AI development company',
+    'enterprise software company Europe',
+    'offshore software development company',
   ],
 });
 
@@ -29,14 +41,31 @@ export default function Home() {
   return (
     <>
       <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'ProfessionalService',
-          name: 'Codentrixa',
-          serviceType: 'Custom software development and IT outsourcing',
-          areaServed: 'Worldwide',
-          priceRange: '$$',
-        }}
+        data={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'Codentrixa',
+            serviceType:
+              'AI development, custom software development, MERN stack, React, cross-platform mobile, SaaS, OpenAI integration',
+            areaServed: [
+              'United States',
+              'United Kingdom',
+              'Germany',
+              'Switzerland',
+              'Luxembourg',
+              'Netherlands',
+              'France',
+              'Canada',
+              'Australia',
+              'United Arab Emirates',
+              'Singapore',
+              'European Union',
+            ],
+            priceRange: '$$',
+          },
+          faqLd(HOME_FAQS.map(({ q, a }) => ({ q, a }))),
+        ]}
       />
       <Hero />
       <Stats />
@@ -46,6 +75,7 @@ export default function Home() {
       <Technologies />
       <CaseStudies preview />
       <Testimonials />
+      <FAQAI items={HOME_FAQS} />
       <CTA />
     </>
   );
