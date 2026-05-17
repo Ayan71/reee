@@ -97,11 +97,6 @@ export default function CaseStudies({ preview = false }: Props) {
               {/* Logo banner */}
               <div
                 className="relative h-44 md:h-48 flex items-center justify-center overflow-hidden"
-                style={{
-                  background:
-                    c.logoBg ??
-                    'linear-gradient(135deg, var(--surface) 0%, var(--card) 100%)',
-                }}
               >
                 {/* Decorative pattern */}
                 <div
