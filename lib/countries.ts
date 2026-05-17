@@ -13,7 +13,7 @@ export type CountryLanding = {
   /** Where they search from (used in subtitles and intent strings). */
   cities: string[];
   /** Pricing currency shown on the page. */
-  currency: 'USD' | 'EUR' | 'GBP' | 'CHF' | 'CAD' | 'AUD' | 'AED' | 'SGD';
+  currency: 'USD' | 'EUR' | 'GBP' | 'CHF' | 'CAD' | 'AUD' | 'AED' | 'SGD' | 'INR';
   /** Local-language flavor we acknowledge in copy. */
   language: string;
   /** SEO meta title. */
