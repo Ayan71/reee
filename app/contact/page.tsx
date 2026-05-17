@@ -47,13 +47,7 @@ export default function ContactPage() {
                 href={`mailto:${COMPANY_EMAIL}`}
                 hint="We reply within one business day."
               />
-              <ContactRow
-                icon={CalendarClock}
-                title="Book a consultation"
-                value="30-minute discovery call"
-                href={`mailto:${COMPANY_EMAIL}?subject=Consultation%20request`}
-                hint="Free, no sales pitch."
-              />
+           
               <ContactRow
                 icon={MapPin}
                 title="Where we work from"
@@ -94,34 +88,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map placeholder */}
-      <section className="pb-20 md:pb-28" style={{ background: 'var(--bg)' }}>
-        <div className="container-custom">
-          <div
-            className="rounded-[20px] overflow-hidden card-flat aspect-[16/6] flex items-center justify-center relative"
-            aria-label="Map placeholder"
-          >
-            <div
-              className="absolute inset-0 opacity-50"
-              style={{
-                backgroundImage:
-                  'radial-gradient(rgba(28,24,20,0.05) 1px, transparent 1px), radial-gradient(rgba(28,24,20,0.05) 1px, transparent 1px)',
-                backgroundSize: '24px 24px, 24px 24px',
-                backgroundPosition: '0 0, 12px 12px',
-              }}
-            />
-            <div className="relative text-center">
-              <MapPin className="w-8 h-8 mx-auto" style={{ color: 'var(--accent)' }} />
-              <p className="mt-3 text-sm font-medium" style={{ color: 'var(--ink)' }}>
-                {COMPANY_ADDRESS}
-              </p>
-              <p className="text-xs mt-1" style={{ color: 'var(--muted)' }}>
-                Embed your preferred map provider here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

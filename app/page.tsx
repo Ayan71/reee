@@ -76,7 +76,6 @@ export default function Home() {
       <CaseStudies preview />
       <Testimonials />
       <FAQAI items={HOME_FAQS} />
-      <CTA />
     </>
   );
 }
