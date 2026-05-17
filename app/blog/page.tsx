@@ -26,7 +26,7 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-const CATEGORIES = ['All', 'AI', 'Engineering', 'Product', 'Delivery'] as const;
+const CATEGORIES = ['All'] as const;
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-US', {

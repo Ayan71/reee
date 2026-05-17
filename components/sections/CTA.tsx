@@ -43,9 +43,7 @@ export default function CTA({
               <p className="lede mt-4 max-w-2xl text-pretty">{body}</p>
             </div>
             <div className="lg:col-span-4 flex flex-wrap gap-3 lg:justify-end">
-              <Link href={primaryHref} className="btn-primary">
-                {primaryLabel} <ArrowRight className="w-4 h-4" />
-              </Link>
+     
               <Link href={secondaryHref} className="btn-secondary">
                 <CalendarClock className="w-4 h-4" />
                 {secondaryLabel}
