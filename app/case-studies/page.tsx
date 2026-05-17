@@ -3,8 +3,8 @@ import PageHeader from '@/components/sections/PageHeader';
 import CaseStudies from '@/components/sections/CaseStudies';
 import CTA from '@/components/sections/CTA';
 import JsonLd from '@/components/seo/JsonLd';
-import { buildMetadata, breadcrumbLd } from '@/lib/seo';
-import { CASE_STUDIES, SITE_URL } from '@/lib/constants';
+import { buildMetadata, breadcrumbLd, SITE_URL } from '@/lib/seo';
+import { CASE_STUDIES } from '@/lib/constants';
 
 const CANONICAL_PATH = '/case-studies';
 

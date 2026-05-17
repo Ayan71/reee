@@ -75,9 +75,9 @@ export default function ContactPage() {
               />
               <ContactRow
                 icon={MapPin}
-                title="Headquarters"
+                title="Where we work from"
                 value={COMPANY_ADDRESS}
-                hint="Remote-first — overlap with US, EU, APAC."
+                hint="Fully remote — overlapping hours with US, EU, and APAC clients."
               />
 
               {/* Social */}

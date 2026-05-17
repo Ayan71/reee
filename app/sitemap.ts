@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
 import { TECH_DETAILS } from '@/lib/tech-data';
+import { BLOG_POSTS } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -12,7 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/case-studies', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/careers', priority: 0.8, changeFrequency: 'weekly' },
     { path: '/contact', priority: 0.7, changeFrequency: 'yearly' },
-    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
+    { path: '/blog', priority: 0.7, changeFrequency: 'weekly' },
+    { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
     { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
   ];
 
@@ -22,7 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
   }));
 
-  return [...staticRoutes, ...techRoutes].map((r) => ({
+  const blogRoutes = BLOG_POSTS.map((p) => ({
+    path: `/blog/${p.slug}`,
+    priority: 0.6,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  return [...staticRoutes, ...techRoutes, ...blogRoutes].map((r) => ({
     url: `${SITE_URL}${r.path}`,
     lastModified: now,
     changeFrequency: r.changeFrequency,

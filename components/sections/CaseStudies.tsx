@@ -3,12 +3,27 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { ArrowUpRight, CircleCheckBig } from 'lucide-react';
+import {
+  ArrowUpRight,
+  CircleCheckBig,
+  PlayCircle,
+  Apple,
+  Globe,
+  ExternalLink,
+} from 'lucide-react';
 import { CASE_STUDIES, CASE_STUDY_CATEGORIES } from '@/lib/constants';
+import type { CaseStudyLink } from '@/lib/constants';
 
 type Props = {
   /** Compact preview for the home page (no filters, limited count). */
   preview?: boolean;
+};
+
+const LINK_ICONS: Record<CaseStudyLink['icon'], React.ElementType> = {
+  play: PlayCircle,
+  apple: Apple,
+  globe: Globe,
+  external: ExternalLink,
 };
 
 export default function CaseStudies({ preview = false }: Props) {
@@ -29,11 +44,11 @@ export default function CaseStudies({ preview = false }: Props) {
           <div className="max-w-2xl">
             <span className="eyebrow">Case studies</span>
             <h2 className="h-section mt-3 text-balance">
-              Real problems. Real outcomes. Real numbers.
+              Shipped products. Real users. Live on the stores.
             </h2>
             <p className="lede mt-4 text-pretty">
-              We don&apos;t do portfolio screenshots. Each engagement below is a problem we walked
-              into, the system we built, and the results that followed.
+              Apps and platforms we&apos;ve designed, engineered, and deployed for real clients —
+              with links to the live products you can install today.
             </p>
           </div>
           {preview && (
@@ -75,12 +90,32 @@ export default function CaseStudies({ preview = false }: Props) {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: (i % 3) * 0.06, duration: 0.5 }}
             >
-              <span
-                className="self-start text-[11px] font-semibold tracking-[0.16em] uppercase px-2.5 py-1 rounded-full mb-4"
-                style={{ background: 'var(--accent-soft)', color: 'var(--accent-dark)' }}
-              >
-                {c.category}
-              </span>
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <span
+                  className="text-[11px] font-semibold tracking-[0.16em] uppercase px-2.5 py-1 rounded-full"
+                  style={{ background: 'var(--accent-soft)', color: 'var(--accent-dark)' }}
+                >
+                  {c.category}
+                </span>
+                {c.status && (
+                  <span
+                    className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full"
+                    style={{ background: 'rgba(34,197,94,0.10)', color: '#16804A' }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#22C55E' }} />
+                    {c.status}
+                  </span>
+                )}
+              </div>
+
+              {c.client && (
+                <div
+                  className="text-[11px] font-semibold tracking-[0.16em] uppercase mb-1"
+                  style={{ color: 'var(--muted)' }}
+                >
+                  {c.client}
+                </div>
+              )}
               <h3 className="text-lg font-semibold leading-snug" style={{ color: 'var(--ink)' }}>
                 {c.title}
               </h3>
@@ -123,6 +158,31 @@ export default function CaseStudies({ preview = false }: Props) {
                   </span>
                 ))}
               </div>
+
+              {c.links && c.links.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {c.links.map((l) => {
+                    const Icon = LINK_ICONS[l.icon] || ExternalLink;
+                    return (
+                      <a
+                        key={l.href}
+                        href={l.href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"
+                        style={{
+                          background: 'var(--ink)',
+                          color: '#fff',
+                        }}
+                      >
+                        <Icon className="w-3.5 h-3.5" />
+                        {l.label}
+                        <ArrowUpRight className="w-3 h-3 opacity-80" />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </motion.article>
           ))}
         </div>

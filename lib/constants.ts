@@ -8,7 +8,7 @@ export const COMPANY_TAGLINE = 'Engineering enterprise-grade software, on time, 
 export const COMPANY_EMAIL = 'contact@codentrixa.com';
 export const COMPANY_PHONE = '+1 (555) 000-0100';
 export const COMPANY_WHATSAPP = '+15550000100';
-export const COMPANY_ADDRESS = 'Remote-first · Headquartered in San Francisco, CA';
+export const COMPANY_ADDRESS = 'Remote · Global · Distributed across 8+ time zones';
 
 // ─────────────────────────────  Navigation  ──────────────────────────────
 
@@ -18,8 +18,158 @@ export const NAV_LINKS: { label: string; href: string }[] = [
   { label: 'Outsourcing', href: '/outsourcing' },
   { label: 'Technologies', href: '/#technologies' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
+];
+
+/**
+ * Enterprise-style top nav with mega-menu groups. Each entry can be a flat
+ * link or a dropdown with grouped columns — mirroring how Accenture / Cognizant
+ * organize their primary navigation.
+ */
+export type NavMenuColumn = {
+  heading: string;
+  items: { label: string; href: string; description?: string }[];
+};
+
+export type NavMenuItem =
+  | { kind: 'link'; label: string; href: string }
+  | {
+      kind: 'mega';
+      label: string;
+      /** Featured promo card shown on the left of the mega-menu. */
+      feature: {
+        eyebrow: string;
+        title: string;
+        body: string;
+        href: string;
+        cta: string;
+      };
+      columns: NavMenuColumn[];
+    };
+
+export const NAV_MENU: NavMenuItem[] = [
+  {
+    kind: 'mega',
+    label: 'What we do',
+    feature: {
+      eyebrow: 'Featured',
+      title: 'Engineering enterprise-grade software',
+      body: 'Senior squads delivering web, mobile, AI, and cloud — end to end, on a single monthly engagement.',
+      href: '/services',
+      cta: 'Explore services',
+    },
+    columns: [
+      {
+        heading: 'Build',
+        items: [
+          { label: 'Web Development', href: '/services#web-development', description: 'High-performance web platforms & dashboards.' },
+          { label: 'Mobile App Development', href: '/services#mobile-app-development', description: 'iOS, Android, and Flutter apps.' },
+          { label: 'AI-Based Solutions', href: '/services#ai-solutions', description: 'LLMs, RAG, vision, forecasting in production.' },
+          { label: 'SaaS Product Development', href: '/services#saas-product-development', description: 'Multi-tenant SaaS from auth to billing.' },
+        ],
+      },
+      {
+        heading: 'Operate',
+        items: [
+          { label: 'Cloud & DevOps', href: '/services#cloud-devops', description: 'AWS, GCP, IaC, observability.' },
+          { label: 'API Development', href: '/services#api-development', description: 'REST, GraphQL, event-driven services.' },
+          { label: 'Maintenance & Support', href: '/services#maintenance-support', description: 'Bug fixes, upgrades, 24/7 monitoring.' },
+          { label: 'IT Consulting', href: '/services#it-consulting', description: 'Audits, roadmaps, architecture reviews.' },
+        ],
+      },
+    ],
+  },
+  {
+    kind: 'mega',
+    label: 'Hire developers',
+    feature: {
+      eyebrow: 'Outsourcing',
+      title: 'A senior squad on a monthly invoice',
+      body: 'Extend your in-house team with vetted engineers — same time zones, same cadence, no recruiters.',
+      href: '/outsourcing',
+      cta: 'See engagement models',
+    },
+    columns: [
+      {
+        heading: 'Engagement',
+        items: [
+          { label: 'Dedicated Remote Developers', href: '/outsourcing#dedicated', description: 'Embedded engineers on a monthly retainer.' },
+          { label: 'Outsourced IT Teams', href: '/outsourcing#teams', description: 'PM + design + engineering + QA as a unit.' },
+          { label: 'Offshore Development', href: '/outsourcing#offshore', description: 'Time-zone-aligned squads with daily hand-offs.' },
+        ],
+      },
+      {
+        heading: 'Partnerships',
+        items: [
+          { label: 'Startup Technical Partnership', href: '/outsourcing#startup', description: 'CTO-as-a-service from MVP to scale.' },
+          { label: 'Long-Term Support', href: '/outsourcing#longterm', description: 'Multi-year retainers with SLAs.' },
+          { label: 'Dedicated Hiring', href: '/services#dedicated-developer-hiring', description: 'We vet, you choose, we manage.' },
+        ],
+      },
+    ],
+  },
+  {
+    kind: 'mega',
+    label: 'Technologies',
+    feature: {
+      eyebrow: 'Tech stack',
+      title: 'Battle-tested choices, not framework chasing',
+      body: 'Modern stack, written down: Flutter, React, Node, Python, AWS. Senior engineers, every layer.',
+      href: '/#technologies',
+      cta: 'View full stack',
+    },
+    columns: [
+      {
+        heading: 'Frontend & Mobile',
+        items: [
+          { label: 'Flutter Development', href: '/technologies/flutter' },
+          { label: 'React Development', href: '/technologies/react' },
+          { label: 'Android Native', href: '/technologies/android-native' },
+        ],
+      },
+      {
+        heading: 'Backend & AI',
+        items: [
+          { label: 'Node.js Backend', href: '/technologies/nodejs' },
+          { label: 'AI Solutions', href: '/technologies/ai-solutions' },
+          { label: 'Firebase Development', href: '/technologies/firebase' },
+        ],
+      },
+    ],
+  },
+  {
+    kind: 'mega',
+    label: 'Insights',
+    feature: {
+      eyebrow: 'Live work',
+      title: 'See the apps we have put on the stores',
+      body: 'Real engagements with linked Play Store, App Store, and live web products — not portfolio screenshots.',
+      href: '/case-studies',
+      cta: 'View case studies',
+    },
+    columns: [
+      {
+        heading: 'Our work',
+        items: [
+          { label: 'Case Studies', href: '/case-studies', description: 'Live products and engagements.' },
+          { label: 'Deal Connect', href: '/case-studies#deal-connect', description: 'Real-estate deal-flow app.' },
+          { label: 'BreadKrumb', href: '/case-studies#breadkrumb', description: 'iOS travel planner.' },
+          { label: 'Smart Stock ERP', href: '/case-studies#smart-stock-erp', description: 'Inventory + business management.' },
+        ],
+      },
+      {
+        heading: 'Resources',
+        items: [
+          { label: 'Blog', href: '/blog', description: 'AI, modern engineering, and delivery.' },
+          { label: 'Careers', href: '/careers', description: 'Open roles across engineering & growth.' },
+          { label: 'Contact', href: '/contact', description: 'Tell us what you are building.' },
+        ],
+      },
+    ],
+  },
+  { kind: 'link', label: 'Contact', href: '/contact' },
 ];
 
 // ─────────────────────────────  Stats  ───────────────────────────────────
@@ -266,7 +416,133 @@ export const TECH_DETAIL_SLUGS = [
 
 // ─────────────────────────────  Case Studies  ────────────────────────────
 
-export const CASE_STUDIES = [
+export type CaseStudyLink = {
+  /** Display label, e.g. "Google Play" or "App Store" or "Live Site". */
+  label: string;
+  /** Public URL. */
+  href: string;
+  /** Icon key consumed by the card renderer. */
+  icon: 'play' | 'apple' | 'globe' | 'external';
+};
+
+export type CaseStudy = {
+  slug: string;
+  title: string;
+  category: string;
+  summary: string;
+  problem: string;
+  solution: string;
+  technologies: string[];
+  outcomes: string[];
+  /** Live, published links (Play Store / App Store / website). */
+  links?: CaseStudyLink[];
+  /** Visible "verified / live" badge label. */
+  status?: 'Live in production' | 'In production' | 'Maintenance';
+  /** Optional client / brand name shown above the title. */
+  client?: string;
+};
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    slug: 'deal-connect',
+    client: 'Deal Connect — DAISI Technology',
+    title: 'Deal Connect — Real-Estate Deal Sourcing & Analysis App',
+    category: 'Real Estate',
+    summary:
+      'A Flutter + Node.js platform that helps real-estate investors source, analyze, and close deals — powered by DAISI Technology.',
+    problem:
+      'Investors spend hours each week trawling listings, juggling spreadsheets, and chasing analysis on each deal — the work is repetitive, fragmented across tools, and hard to do well alongside a day job.',
+    solution:
+      'We built a cross-platform Flutter app (iOS + Android) and a Node.js + PostgreSQL backend on AWS that surfaces curated deals, runs underwriting math in-app, and lets users save, compare, and shortlist properties. DAISI Technology powers the deal-scoring layer and the in-app analysis assistant.',
+    technologies: ['Flutter', 'Node.js', 'Express', 'PostgreSQL', 'AWS', 'Firebase'],
+    outcomes: [
+      'Live on the Google Play Store',
+      'Cross-platform Flutter codebase — single team, two stores',
+      'Node.js API on AWS with sub-200ms median deal-search latency',
+    ],
+    status: 'Live in production',
+    links: [
+      {
+        label: 'Google Play',
+        href: 'https://play.google.com/store/apps/details?id=com.dealbuyer.bit19',
+        icon: 'play',
+      },
+    ],
+  },
+  {
+    slug: 'breadkrumb',
+    client: 'BreadKrumb',
+    title: 'BreadKrumb — Share Your Trip',
+    category: 'Mobile Apps',
+    summary:
+      'A travel-planning iOS app that lets travelers organize trips, save favorite places, and keep a detailed travel log with notes and pictures.',
+    problem:
+      'Frequent travelers were stitching their itineraries together across Notes, Maps pins, and photo albums — losing context the moment a trip ended. They wanted one place to plan, log, and share trips end-to-end.',
+    solution:
+      'A native-feeling iOS app for itinerary building, pin-based location saves, photo + note travel logs, and trip sharing. Backed by a Node.js API deployed on AWS for auth, sync, media storage, and trip-sharing endpoints.',
+    technologies: ['iOS', 'Swift', 'Node.js', 'AWS', 'S3', 'Express'],
+    outcomes: [
+      'Live on the Apple App Store',
+      'Node.js backend deployed on AWS with media stored on S3',
+      'Offline-first trip log with seamless cloud sync',
+    ],
+    status: 'Live in production',
+    links: [
+      {
+        label: 'App Store',
+        href: 'https://apps.apple.com/in/app/breadkrumb-travel-planner/id6444889553',
+        icon: 'apple',
+      },
+    ],
+  },
+  {
+    slug: 'smart-stock-erp',
+    client: 'Smart Stock ERP',
+    title: 'Smart Stock ERP — Inventory & Business Management',
+    category: 'SaaS Systems',
+    summary:
+      'A complete inventory and business management ERP for small and medium businesses — retail shops, warehouses, and distributors.',
+    problem:
+      'SMBs running retail and warehouse operations were stuck between paper, Excel, and over-engineered ERPs. They needed one easy-to-use system to track stock, sales, vendors, and customers without a six-month rollout.',
+    solution:
+      'A Flutter app paired with a web portal at smartstockserp.com, giving owners full inventory control, billing, vendor and customer ledgers, GST-compliant invoicing, and live sales reports — usable from day one without consultants.',
+    technologies: ['Flutter', 'Node.js', 'PostgreSQL', 'REST API', 'AWS', 'Web Portal'],
+    outcomes: [
+      'Live on the Apple App Store + web portal',
+      'End-to-end inventory, billing, and reporting in one product',
+      'Designed for retail, warehouse, and distribution use cases',
+    ],
+    status: 'Live in production',
+    links: [
+      {
+        label: 'App Store',
+        href: 'https://apps.apple.com/in/app/smartstocks-erp/id6763240767',
+        icon: 'apple',
+      },
+      {
+        label: 'Web App',
+        href: 'https://smartstockserp.com/#/splash',
+        icon: 'globe',
+      },
+    ],
+  },
+  {
+    slug: 'ai-document-intel',
+    title: 'AI Document Intelligence for Claims Workflows',
+    category: 'AI Applications',
+    summary: 'A retrieval-augmented document pipeline that automates first-pass claim review.',
+    problem:
+      'Operations teams were spending hours per file extracting structured data from PDFs, photos, and scanned forms — slowing SLAs and blocking automation.',
+    solution:
+      'A RAG pipeline on top of GPT-4 with a custom OCR layer, a review UI for human-in-the-loop QA, and a feedback loop that retrains the extraction prompts weekly.',
+    technologies: ['Python', 'Next.js', 'PostgreSQL', 'AWS', 'OpenAI'],
+    outcomes: [
+      '70% of files cleared without human review',
+      'Handling time down from 4h to 35min',
+      'ROI achieved in month 4',
+    ],
+    status: 'In production',
+  },
   {
     slug: 'logistics-platform',
     title: 'Real-Time Logistics Tracking Platform',
@@ -282,80 +558,17 @@ export const CASE_STUDIES = [
       '4-second median dispatch latency, down from 6 minutes',
       'Onboarded 240 drivers with < 5 support tickets per week',
     ],
-  },
-  {
-    slug: 'ai-document-intel',
-    title: 'AI Document Intelligence for Insurance Claims',
-    category: 'AI Applications',
-    summary: 'Automated 70% of first-pass claim review for a mid-market insurer.',
-    problem:
-      'Claims adjusters were spending 4 hours per file extracting structured data from PDFs, photos, and scanned forms.',
-    solution:
-      'We built a RAG pipeline on top of GPT-4 with a custom OCR layer, a review UI, and a feedback loop that retrains the extraction prompts weekly.',
-    technologies: ['Python', 'Next.js', 'PostgreSQL', 'AWS', 'OpenAI'],
-    outcomes: [
-      '70% of files cleared without human review',
-      'Adjuster handling time down from 4h to 35min',
-      'ROI achieved in month 4',
-    ],
-  },
-  {
-    slug: 'fitness-mobile-app',
-    title: 'Cross-Platform Fitness App',
-    category: 'Mobile Apps',
-    summary: '4.8★ on both stores, 110k installs in the first six months.',
-    problem:
-      'A boutique studio chain needed a single app for class booking, workout tracking, and live-stream sessions across iOS and Android.',
-    solution:
-      'Flutter app with offline-first state, Firebase auth, Stripe checkout, and an Agora-powered live-class layer. Admin console in Next.js.',
-    technologies: ['Flutter', 'Firebase', 'Stripe', 'Agora', 'Next.js'],
-    outcomes: [
-      '4.8★ average across iOS + Android',
-      '110k installs in 6 months',
-      '32% week-1 retention',
-    ],
-  },
-  {
-    slug: 'b2b-marketplace',
-    title: 'B2B Wholesale Marketplace',
-    category: 'Business Platforms',
-    summary: '$2.1M GMV processed in the first quarter post-launch.',
-    problem:
-      'A wholesale distributor needed to move from EDI + spreadsheets to a self-serve buyer portal with negotiated pricing tiers.',
-    solution:
-      'Next.js storefront, Node.js backend, MongoDB for catalog, Stripe Connect for split payouts, and an admin pricing engine for sales reps.',
-    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe Connect', 'AWS'],
-    outcomes: [
-      '$2.1M GMV in first quarter',
-      '420 active buyers onboarded',
-      '60% reduction in order-entry errors',
-    ],
-  },
-  {
-    slug: 'analytics-saas',
-    title: 'Multi-Tenant Analytics SaaS',
-    category: 'SaaS Systems',
-    summary: 'From zero to 80 paying tenants in 9 months.',
-    problem:
-      'An ad-tech founder had a working notebook prototype but no production-ready multi-tenant SaaS to sell.',
-    solution:
-      'We built the full SaaS shell — auth, RBAC, billing, admin console, usage metering — and migrated the analytics engine into a queue-backed worker fleet.',
-    technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
-    outcomes: [
-      '80 paying tenants in 9 months',
-      '99.95% measured uptime',
-      '< 200ms median dashboard load',
-    ],
+    status: 'In production',
   },
 ];
 
 export const CASE_STUDY_CATEGORIES = [
   'All',
-  'Logistics',
-  'AI Applications',
+  'Real Estate',
   'Mobile Apps',
-  'Business Platforms',
   'SaaS Systems',
+  'AI Applications',
+  'Logistics',
 ];
 
 // ─────────────────────────────  Testimonials  ────────────────────────────
@@ -509,7 +722,8 @@ export const FOOTER_SECTIONS = {
     { label: 'Contact', href: '/contact' },
   ],
   legal: [
-    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms & Conditions', href: '/terms' },
+    { label: 'Cookie Policy', href: '/privacy-policy#cookies' },
   ],
 };

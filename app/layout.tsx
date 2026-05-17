@@ -4,7 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import JsonLd from '@/components/seo/JsonLd';
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, organizationLd, websiteLd } from '@/lib/seo';
+import CookieBanner from '@/components/layout/CookieBanner';
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_OG_IMAGE, organizationLd, websiteLd } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -52,12 +53,22 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Enterprise Software Studio`,
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Enterprise Software Studio`,
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} | Enterprise Software Studio`,
     description: SITE_DESCRIPTION,
     creator: '@codentrixa',
+    images: [DEFAULT_OG_IMAGE],
   },
   verification: {
     // Replace with real values when issued.
@@ -79,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <CookieBanner />
         <Toaster />
       </body>
     </html>
