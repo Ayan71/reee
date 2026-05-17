@@ -180,27 +180,35 @@ export const NAV_MENU: NavMenuItem[] = [
       href: '/global',
       cta: 'All markets',
     },
-    columns: [
-      {
-        heading: 'Americas',
-        items: [
-          { label: 'United States', href: '/global/usa', description: 'AI development & MERN, USD billing.' },
-          { label: 'Canada', href: '/global/canada', description: 'CAD / USD billing, PIPEDA-aware.' },
-        ],
-      },
-      {
-        heading: 'Europe & MENA',
-        items: [
-          { label: 'United Kingdom', href: '/global/uk', description: 'GBP billing, GDPR-ready.' },
-          { label: 'Germany', href: '/global/germany', description: 'EUR billing, EU data residency.' },
-          { label: 'Switzerland', href: '/global/switzerland', description: 'CHF billing, Swiss data residency.' },
-          { label: 'Netherlands', href: '/global/netherlands', description: 'EUR billing, CET overlap.' },
-          { label: 'France', href: '/global/france', description: 'EUR billing, RGPD-ready.' },
-          { label: 'Luxembourg', href: '/global/luxembourg', description: 'EUR billing, EU fintech.' },
-          { label: 'Dubai · UAE', href: '/global/dubai-uae', description: 'AED / USD billing, Gulf-time overlap.' },
-        ],
-      },
+  columns: [
+  {
+    heading: 'Americas',
+    items: [
+      { label: 'United States', href: '/global/usa', description: 'AI development & MERN, USD billing.' },
+      { label: 'Canada', href: '/global/canada', description: 'CAD / USD billing, PIPEDA-aware.' },
     ],
+  },
+  {
+    heading: 'Europe & MENA',
+    items: [
+      { label: 'United Kingdom', href: '/global/uk', description: 'GBP billing, GDPR-ready.' },
+      { label: 'Germany', href: '/global/germany', description: 'EUR billing, EU data residency.' },
+      { label: 'Switzerland', href: '/global/switzerland', description: 'CHF billing, Swiss data residency.' },
+      { label: 'Netherlands', href: '/global/netherlands', description: 'EUR billing, CET overlap.' },
+      { label: 'France', href: '/global/france', description: 'EUR billing, RGPD-ready.' },
+      { label: 'Luxembourg', href: '/global/luxembourg', description: 'EUR billing, EU fintech.' },
+      { label: 'Dubai · UAE', href: '/global/dubai-uae', description: 'AED / USD billing, Gulf-time overlap.' },
+    ],
+  },
+  {
+    heading: 'Asia-Pacific',
+    items: [
+      { label: 'India', href: '/global/india', description: 'INR / USD billing, scalable offshore development.' },
+      { label: 'Singapore', href: '/global/singapore', description: 'SGD billing, APAC business support.' },
+      { label: 'Australia', href: '/global/australia', description: 'AUD billing, remote-first delivery.' },
+    ],
+  },
+],
   },
   { kind: 'link', label: 'Contact', href: '/contact' },
 ];
