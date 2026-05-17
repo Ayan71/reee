@@ -362,6 +362,59 @@ export const COUNTRIES: CountryLanding[] = [
     ],
   },
   {
+  slug: 'india',
+  country: 'India',
+  code: 'IN',
+  cities: ['Bangalore', 'Mumbai', 'Delhi', 'Hyderabad', 'Pune'],
+  currency: 'INR',
+  language: 'English & Hindi',
+  title:
+    'AI & Software Development Company in India | MERN, React | Codentrixa',
+  description:
+    'Codentrixa is an AI development and custom software company serving Indian startups and enterprises in Bangalore, Mumbai, Delhi, Hyderabad, and Pune — MERN, React, cross-platform mobile, AI-powered backends, and OpenAI integration.',
+  eyebrow: 'India · INR billing',
+  h1: 'AI & Software Development Partner for Indian Companies',
+  lede:
+    'Codentrixa is the AI development and custom software partner for Indian startups, SaaS businesses, and enterprises. From Bangalore tech startups to Mumbai e-commerce platforms, we deliver MERN web applications, React apps, AI-powered backends, and scalable cross-platform mobile products — billed in INR or USD with scalable cloud infrastructure.',
+  keywords: [
+    'IT services company India',
+    'AI development company India',
+    'software development company Bangalore',
+    'MERN stack developers India',
+    'React development company India',
+    'mobile app development India',
+    'SaaS development India',
+    'AI automation agency India',
+    'enterprise software company India',
+    'OpenAI integration services India',
+  ],
+  trustPoints: [
+    'INR & USD billing support',
+    'Scalable offshore development team',
+    'Agile sprint-based product delivery',
+    'Full overlap with IST working hours',
+  ],
+  featuredServices: [
+    'ai-solutions',
+    'web-development',
+    'mobile-app-development',
+    'saas-product-development',
+    'backend-development',
+    'cloud-devops',
+  ],
+  industries: ['SaaS', 'Fintech', 'Healthcare', 'E-commerce', 'EdTech'],
+  faqs: [
+    {
+      q: 'Do you work directly with Indian startups and enterprises?',
+      a: 'Yes — Codentrixa works with startups, SMEs, and enterprises across Bangalore, Mumbai, Delhi, Hyderabad, and Pune. We provide scalable development teams, agile sprint delivery, and flexible INR or USD billing models.',
+    },
+    {
+      q: 'Do you provide AI and MERN stack development services in India?',
+      a: 'Yes. Codentrixa specializes in MERN stack development, AI-powered applications, OpenAI integrations, SaaS platforms, and cross-platform mobile app development tailored for Indian businesses.',
+    },
+  ],
+},
+  {
     slug: 'france',
     country: 'France',
     code: 'FR',

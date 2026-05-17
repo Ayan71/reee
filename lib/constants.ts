@@ -176,7 +176,7 @@ export const NAV_MENU: NavMenuItem[] = [
     feature: {
       eyebrow: 'Global delivery',
       title: 'Localized billing, hosting, and contracts',
-      body: 'AI and software delivery localized to your market — USD, EUR, GBP, CHF, AED, SGD billing with country-specific data residency.',
+      body: 'AI and software delivery localized to your market — USD, EUR, GBP, CHF, AED, INR,SGD billing with country-specific data residency.',
       href: '/global',
       cta: 'All markets',
     },
