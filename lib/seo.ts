@@ -88,12 +88,8 @@ export function organizationLd() {
         availableLanguage: ['English'],
       },
     ],
-    sameAs: [
-      'https://www.linkedin.com/',
-      'https://github.com/',
-      'https://twitter.com/',
-      'https://instagram.com/',
-    ],
+    // Social profile URLs — fill in once the real profiles are live.
+    sameAs: [],
   } as const;
 }
 

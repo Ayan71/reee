@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { Linkedin, Github, Twitter, Instagram, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { Linkedin, Github, Twitter, Instagram, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import {
   COMPANY_NAME,
   COMPANY_EMAIL,
-  COMPANY_PHONE,
   COMPANY_ADDRESS,
   FOOTER_SECTIONS,
   SOCIAL_LINKS,
@@ -49,9 +49,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2 max-w-sm">
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <span className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'var(--accent)' }}>
-                <span className="text-white font-bold text-sm">C</span>
-              </span>
+              <Image
+                src="/codentrixa_mark.png"
+                alt={`${COMPANY_NAME} logomark`}
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain"
+              />
               <span className="font-semibold text-[1.05rem]" style={{ color: 'var(--ink)' }}>
                 {COMPANY_NAME.slice(0, 4)}
                 <span style={{ color: 'var(--accent)' }}>{COMPANY_NAME.slice(4)}</span>
@@ -67,12 +71,6 @@ export default function Footer() {
                 <Mail className="w-4 h-4 mt-0.5" style={{ color: 'var(--accent)' }} />
                 <a href={`mailto:${COMPANY_EMAIL}`} className="hover:underline" style={{ color: 'var(--ink)' }}>
                   {COMPANY_EMAIL}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5" style={{ color: 'var(--accent)' }} />
-                <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="hover:underline" style={{ color: 'var(--ink)' }}>
-                  {COMPANY_PHONE}
                 </a>
               </li>
               <li className="flex items-start gap-3">

@@ -6,8 +6,9 @@
 export const COMPANY_NAME = 'Codentrixa';
 export const COMPANY_TAGLINE = 'Engineering enterprise-grade software, on time, on scope.';
 export const COMPANY_EMAIL = 'contact@codentrixa.com';
-export const COMPANY_PHONE = '+1 (555) 000-0100';
-export const COMPANY_WHATSAPP = '+15550000100';
+// Phone & WhatsApp deliberately left empty — no published business number yet.
+export const COMPANY_PHONE = '';
+export const COMPANY_WHATSAPP = '';
 export const COMPANY_ADDRESS = 'Remote · Global · Distributed across 8+ time zones';
 
 // ─────────────────────────────  Navigation  ──────────────────────────────
@@ -249,90 +250,249 @@ export const WHY_CHOOSE_US = [
 
 // ─────────────────────────────  Services  ────────────────────────────────
 
-export const SERVICES = [
+export type Service = {
+  slug: string;
+  title: string;
+  short: string;
+  icon: string;
+  /** Long-form description used on the /services detail section. */
+  detail: string;
+  /** What's included in the service offering — drives the bullet list. */
+  includes: string[];
+  /** Typical tech stack we deploy for this service. */
+  stack?: string[];
+  /** Optional related slug to link to (a technology page, for example). */
+  related?: { label: string; href: string };
+};
+
+export const SERVICES: Service[] = [
   {
     slug: 'web-development',
     title: 'Web Development',
     short: 'High-performance web platforms — marketing sites, dashboards, internal tools.',
     icon: 'globe',
+    detail:
+      'We design, build, and operate fast, accessible web applications — from marketing sites that convert to internal dashboards that scale. Every site we ship is Lighthouse-scored, SEO-clean, and built on a maintainable component system.',
+    includes: [
+      'Design system + component library',
+      'SSR / SSG with Next.js (App Router)',
+      'Authentication, billing, and role-based access',
+      'Analytics, A/B tests, and conversion tracking',
+      'CI / CD pipeline + observability',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'PostgreSQL', 'AWS / Vercel'],
+    related: { label: 'See React stack', href: '/technologies/react' },
   },
   {
     slug: 'mobile-app-development',
     title: 'Mobile App Development',
     short: 'iOS and Android apps engineered for app-store-grade reliability.',
     icon: 'smartphone',
+    detail:
+      'We ship cross-platform and native mobile apps that pass app-store review on the first attempt — clean architecture, native-feeling UI, offline-first data, and the boring-but-critical things (deep links, push, IAP, crash reporting) all wired up.',
+    includes: [
+      'Cross-platform (Flutter) or native (Kotlin / Swift)',
+      'Offline-first sync and conflict resolution',
+      'Push notifications, deep links, OTA updates',
+      'In-app purchases, subscriptions, billing',
+      'App store submission + post-launch monitoring',
+    ],
+    stack: ['Flutter', 'Kotlin', 'Swift', 'Firebase', 'Node.js APIs', 'AWS'],
+    related: { label: 'See Flutter stack', href: '/technologies/flutter' },
   },
   {
     slug: 'flutter-app-development',
     title: 'Flutter App Development',
     short: 'One codebase, native performance — ship to iOS, Android, and web in parallel.',
     icon: 'layers',
+    detail:
+      'Three years of production Flutter apps across real estate, travel, and ERP have taught us where the framework shines and where it bites. We build with Riverpod / BLoC, write tests we actually trust, and ship to both stores from a single team.',
+    includes: [
+      'Riverpod / BLoC state management',
+      'Material 3 + custom design system',
+      'Native channel work for sensors, BLE, advanced camera',
+      'Impeller-tuned animations and 60fps lists',
+      'Both stores from one codebase',
+    ],
+    stack: ['Flutter', 'Dart', 'Riverpod', 'Firebase', 'Node.js'],
+    related: { label: 'Read the Flutter case study', href: '/case-studies#deal-connect' },
   },
   {
     slug: 'android-native-development',
     title: 'Android Native Development',
     short: 'Kotlin/Java apps tuned for Android Jetpack, Material 3, and Play Store standards.',
     icon: 'monitor-smartphone',
+    detail:
+      'When the use case demands native — deep platform integrations, custom rendering, or strict performance targets — we ship Android with Kotlin, Jetpack Compose, and a clean MVI / Clean Architecture foundation.',
+    includes: [
+      'Jetpack Compose + Material 3 UI',
+      'Hilt DI, Room, WorkManager',
+      'Kotlin Coroutines + Flow',
+      'Play Store policy compliance & rollout staging',
+    ],
+    stack: ['Kotlin', 'Jetpack Compose', 'Room', 'Retrofit'],
+    related: { label: 'See Android stack', href: '/technologies/android-native' },
   },
   {
     slug: 'backend-development',
     title: 'Backend Development',
     short: 'APIs, services, and data pipelines built for scale and 99.9% uptime.',
     icon: 'server',
+    detail:
+      'Backends we build are documented, tested, and observed. We default to a modular monolith on Node.js or Python, with clean module boundaries that can be extracted into services only when they have earned the right to be one.',
+    includes: [
+      'REST + GraphQL APIs with OpenAPI docs',
+      'Event-driven workflows on queues',
+      'Role-based access, multi-tenant isolation',
+      'PostgreSQL schemas + migration discipline',
+      'Logs, metrics, traces — wired from day one',
+    ],
+    stack: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'Redis', 'AWS'],
+    related: { label: 'See Node.js stack', href: '/technologies/nodejs' },
   },
   {
     slug: 'ai-solutions',
     title: 'AI-Based Solutions',
     short: 'LLM workflows, RAG, vision, forecasting — production AI, not demos.',
     icon: 'brain-circuit',
+    detail:
+      'We build AI features that survive a Monday morning — disciplined evals, citation-backed answers, hybrid retrieval, and a feedback loop that turns user behavior into model behavior. Read our essays on RAG and AI-first product development in the blog.',
+    includes: [
+      'RAG pipelines with hybrid retrieval + re-ranking',
+      'Prompt versioning, eval suites, and CI gates',
+      'Trace inbox + weekly review ritual',
+      'Routing: small models close to data, frontier at the edges',
+      'Citations, guardrails, and human-in-the-loop UX',
+    ],
+    stack: ['Python', 'Node.js', 'OpenAI / Anthropic', 'pgvector', 'PostgreSQL'],
+    related: { label: 'Read AI essays', href: '/blog' },
   },
   {
     slug: 'saas-product-development',
     title: 'SaaS Product Development',
     short: 'Multi-tenant SaaS from auth and billing to admin tooling and analytics.',
     icon: 'box',
+    detail:
+      'We build SaaS products end-to-end — auth, billing, RBAC, admin tooling, usage metering, customer dashboards. Smart Stock ERP is one of ours: a full inventory + business-management system live on the App Store and the web.',
+    includes: [
+      'Multi-tenant architecture from day one',
+      'Stripe / Paddle billing + subscriptions',
+      'Admin tooling, impersonation, support views',
+      'Usage metering, audit logs, GDPR exports',
+      'Embedded analytics + customer dashboards',
+    ],
+    stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
+    related: { label: 'See Smart Stock ERP', href: '/case-studies#smart-stock-erp' },
   },
   {
     slug: 'ui-ux-design',
     title: 'UI/UX Design',
     short: 'Design systems, prototypes, and user research that move conversion.',
     icon: 'palette',
+    detail:
+      'Design is a delivery problem, not a deliverable. We build design systems in Figma that map 1:1 to a component library in code — so what designers ship is what engineers build, no translation tax.',
+    includes: [
+      'Figma design system + tokens',
+      'Tailwind / shadcn component library mapped 1:1',
+      'Prototypes for stakeholder buy-in',
+      'Conversion + usability testing',
+    ],
+    stack: ['Figma', 'Tailwind', 'Storybook', 'Framer Motion'],
   },
   {
     slug: 'api-development',
     title: 'API Development',
     short: 'REST, GraphQL, and event-driven APIs with full OpenAPI contracts.',
     icon: 'plug',
+    detail:
+      'A good API is a contract you can hand to a partner team without a meeting. We deliver OpenAPI-documented, versioned, rate-limited APIs that integrate cleanly with frontends, mobile apps, and partners.',
+    includes: [
+      'REST + GraphQL with OpenAPI / GraphQL schemas',
+      'Versioning, deprecation, and changelog discipline',
+      'OAuth2 / JWT auth, rate limits, audit trails',
+      'Webhook + event-driven integrations',
+      'Postman / SDK packages for partners',
+    ],
+    stack: ['Node.js', 'Express', 'tRPC', 'Apollo', 'OpenAPI'],
   },
   {
     slug: 'cloud-devops',
     title: 'Cloud & DevOps',
     short: 'AWS, GCP, Docker, Kubernetes, CI/CD — infrastructure as code, end to end.',
     icon: 'cloud',
+    detail:
+      'Reliable software runs on reliable infrastructure. We treat infra as code (Terraform / Pulumi), ship via GitHub Actions, and instrument every service with logs, metrics, and traces from day one.',
+    includes: [
+      'Infrastructure as code (Terraform / Pulumi)',
+      'CI / CD pipelines on GitHub Actions',
+      'Container orchestration (ECS / Kubernetes)',
+      'Observability: logs, metrics, traces, alerts',
+      'Cost monitoring + spend reviews',
+    ],
+    stack: ['AWS', 'GCP', 'Terraform', 'Docker', 'GitHub Actions'],
   },
   {
     slug: 'maintenance-support',
     title: 'Maintenance & Support',
     short: 'Bug fixes, version upgrades, security patches, and round-the-clock monitoring.',
     icon: 'life-buoy',
+    detail:
+      'Software does not finish at launch. Our maintenance retainers cover bug fixes, version upgrades, security patches, and an on-call rotation for production incidents — same engineers who built it, still owning it.',
+    includes: [
+      'Monthly retainer with response SLAs',
+      'Library + framework upgrade roadmap',
+      'Security patches + dependency hygiene',
+      'Production on-call rotation',
+      'Monthly health + cost report',
+    ],
+    stack: ['Sentry', 'Datadog', 'PagerDuty', 'GitHub Actions'],
   },
   {
     slug: 'dedicated-developer-hiring',
     title: 'Dedicated Developer Hiring',
     short: 'Hire vetted senior engineers monthly — embedded with your team, managed by us.',
     icon: 'user-plus',
+    detail:
+      'You get a senior engineer embedded in your standups, your Slack, your sprints — on a single monthly invoice. We handle vetting, payroll, equipment, and replacement; you focus on delivery.',
+    includes: [
+      'Vetted senior engineers (5+ years experience)',
+      'Embedded in your sprint and standups',
+      'Single monthly invoice, no surprise fees',
+      'Replacement guarantee within 5 business days',
+      'No long-term lock-in — 30-day exit clause',
+    ],
+    related: { label: 'See outsourcing models', href: '/outsourcing' },
   },
   {
     slug: 'it-consulting',
     title: 'IT Consulting',
     short: 'Architecture reviews, tech-stack audits, and roadmaps from senior practitioners.',
     icon: 'briefcase',
+    detail:
+      'A senior engineer spends a day with your team, documents the current system, and writes a one-pager with the top three risks and the recommended next steps. No PowerPoint. No 80-page decks.',
+    includes: [
+      'One-day architecture review',
+      'Written audit + risk register',
+      '90-day technical roadmap',
+      'Hiring plan + role specs (optional)',
+      'Follow-up office hours',
+    ],
   },
   {
     slug: 'outsourcing-services',
     title: 'Outsourcing Services',
     short: 'Offshore development teams that scale up or down on a monthly basis.',
     icon: 'handshake',
+    detail:
+      'A managed squad — PM, designers, engineers, QA — delivered as a single unit on a monthly engagement. Same delivery playbook as our project work, scaled to whatever pace your roadmap demands.',
+    includes: [
+      'PM + design + engineering + QA as a managed unit',
+      'Two-week sprints with Friday demos',
+      'Single monthly invoice',
+      'Scale up or down with two weeks notice',
+      'Direct Slack channel to the team',
+    ],
+    related: { label: 'See engagement models', href: '/outsourcing' },
   },
 ];
 
@@ -440,6 +600,10 @@ export type CaseStudy = {
   status?: 'Live in production' | 'In production' | 'Maintenance';
   /** Optional client / brand name shown above the title. */
   client?: string;
+  /** Logo / icon image — path relative to /public. */
+  logo?: string;
+  /** Hex background tone for the logo tile. */
+  logoBg?: string;
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -461,6 +625,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Node.js API on AWS with sub-200ms median deal-search latency',
     ],
     status: 'Live in production',
+    logo: '/projects/deal-connect.png',
+    logoBg: '#FBE9E9',
     links: [
       {
         label: 'Google Play',
@@ -487,6 +653,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Offline-first trip log with seamless cloud sync',
     ],
     status: 'Live in production',
+    logo: '/projects/breadkrumb.png',
+    logoBg: '#E6F2F8',
     links: [
       {
         label: 'App Store',
@@ -513,6 +681,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Designed for retail, warehouse, and distribution use cases',
     ],
     status: 'Live in production',
+    logo: '/projects/smartstock-erp.png',
+    logoBg: '#EFF4F8',
     links: [
       {
         label: 'App Store',
@@ -526,40 +696,6 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: 'ai-document-intel',
-    title: 'AI Document Intelligence for Claims Workflows',
-    category: 'AI Applications',
-    summary: 'A retrieval-augmented document pipeline that automates first-pass claim review.',
-    problem:
-      'Operations teams were spending hours per file extracting structured data from PDFs, photos, and scanned forms — slowing SLAs and blocking automation.',
-    solution:
-      'A RAG pipeline on top of GPT-4 with a custom OCR layer, a review UI for human-in-the-loop QA, and a feedback loop that retrains the extraction prompts weekly.',
-    technologies: ['Python', 'Next.js', 'PostgreSQL', 'AWS', 'OpenAI'],
-    outcomes: [
-      '70% of files cleared without human review',
-      'Handling time down from 4h to 35min',
-      'ROI achieved in month 4',
-    ],
-    status: 'In production',
-  },
-  {
-    slug: 'logistics-platform',
-    title: 'Real-Time Logistics Tracking Platform',
-    category: 'Logistics',
-    summary: 'Cut delivery exception rate by 38% for a regional freight operator.',
-    problem:
-      'A 200-truck freight operator was losing visibility on in-transit cargo, leading to manual phone-tree dispatch and a 12% missed-SLA rate.',
-    solution:
-      'We shipped a Flutter driver app, a Next.js dispatch console, and a Node.js + PostgreSQL backend with real-time location streaming via WebSockets and an event log on Redis.',
-    technologies: ['Flutter', 'Next.js', 'Node.js', 'PostgreSQL', 'AWS'],
-    outcomes: [
-      '38% drop in delivery exceptions over 90 days',
-      '4-second median dispatch latency, down from 6 minutes',
-      'Onboarded 240 drivers with < 5 support tickets per week',
-    ],
-    status: 'In production',
-  },
 ];
 
 export const CASE_STUDY_CATEGORIES = [
@@ -567,50 +703,20 @@ export const CASE_STUDY_CATEGORIES = [
   'Real Estate',
   'Mobile Apps',
   'SaaS Systems',
-  'AI Applications',
-  'Logistics',
 ];
 
 // ─────────────────────────────  Testimonials  ────────────────────────────
-
-export const TESTIMONIALS = [
-  {
-    name: 'Priya Natarajan',
-    role: 'VP Engineering',
-    company: 'Cargolane Logistics',
-    rating: 5,
-    quote:
-      'Codentrixa shipped our driver app and dispatch console in nine weeks. They flagged risks we hadn\'t even identified yet. Worth every dollar.',
-    avatar: 'PN',
-  },
-  {
-    name: 'Daniel Okafor',
-    role: 'Founder & CEO',
-    company: 'Northwind Insurance',
-    rating: 5,
-    quote:
-      'We hired them as a one-quarter outsourcing engagement. Eighteen months later they own three production systems and our claims team can\'t imagine working without them.',
-    avatar: 'DO',
-  },
-  {
-    name: 'Lena Hofstetter',
-    role: 'CTO',
-    company: 'Pulsefit Studios',
-    rating: 5,
-    quote:
-      'A 4.8 rating on both app stores tells you everything. The Flutter team delivered native-grade quality without the dual-codebase tax.',
-    avatar: 'LH',
-  },
-  {
-    name: 'Marcus Chen',
-    role: 'Head of Product',
-    company: 'Wholepath Marketplace',
-    rating: 5,
-    quote:
-      'They sat in our standups, owned the roadmap, pushed back on bad ideas. Felt like an extension of our team, not a vendor.',
-    avatar: 'MC',
-  },
-];
+// Empty until real, attributable client reviews are published.
+// The Testimonials section renders a "Team Codentrixa" identity block
+// instead of fake quotes.
+export const TESTIMONIALS: {
+  name: string;
+  role: string;
+  company: string;
+  rating: number;
+  quote: string;
+  avatar: string;
+}[] = [];
 
 // ─────────────────────────────  Hiring Process  ──────────────────────────
 
@@ -700,11 +806,11 @@ export const SOCIAL_LINKS = [
 
 export const FOOTER_SECTIONS = {
   services: [
-    { label: 'Web Development', href: '/services#web-development' },
-    { label: 'Mobile App Development', href: '/services#mobile-app-development' },
-    { label: 'AI-Based Solutions', href: '/services#ai-solutions' },
-    { label: 'SaaS Product Development', href: '/services#saas-product-development' },
-    { label: 'Cloud & DevOps', href: '/services#cloud-devops' },
+    { label: 'Web Development', href: '/services#detail-web-development' },
+    { label: 'Mobile App Development', href: '/services#detail-mobile-app-development' },
+    { label: 'AI-Based Solutions', href: '/services#detail-ai-solutions' },
+    { label: 'SaaS Product Development', href: '/services#detail-saas-product-development' },
+    { label: 'Cloud & DevOps', href: '/services#detail-cloud-devops' },
     { label: 'Outsourcing Services', href: '/outsourcing' },
   ],
   technologies: [

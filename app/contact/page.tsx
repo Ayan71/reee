@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import { Mail, Phone, MapPin, MessageCircle, Linkedin, Github, Twitter, Instagram, CalendarClock } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Github, Twitter, Instagram, CalendarClock } from 'lucide-react';
 import PageHeader from '@/components/sections/PageHeader';
 import InquiryForm from '@/components/forms/InquiryForm';
 import {
   COMPANY_EMAIL,
-  COMPANY_PHONE,
-  COMPANY_WHATSAPP,
   COMPANY_ADDRESS,
   SOCIAL_LINKS,
 } from '@/lib/constants';
@@ -24,8 +22,6 @@ const SOCIAL_ICONS: Record<string, React.ElementType> = {
 };
 
 export default function ContactPage() {
-  const whatsappLink = `https://wa.me/${COMPANY_WHATSAPP.replace(/\D/g, '')}`;
-
   return (
     <>
       <PageHeader
@@ -50,21 +46,6 @@ export default function ContactPage() {
                 value={COMPANY_EMAIL}
                 href={`mailto:${COMPANY_EMAIL}`}
                 hint="We reply within one business day."
-              />
-              <ContactRow
-                icon={Phone}
-                title="Call us"
-                value={COMPANY_PHONE}
-                href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`}
-                hint="Mon–Fri, 9–6 PT."
-              />
-              <ContactRow
-                icon={MessageCircle}
-                title="WhatsApp"
-                value="Chat with us"
-                href={whatsappLink}
-                external
-                hint="Fastest for quick questions."
               />
               <ContactRow
                 icon={CalendarClock}

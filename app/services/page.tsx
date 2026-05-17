@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageHeader from '@/components/sections/PageHeader';
 import Services from '@/components/sections/Services';
+import ServiceDetails from '@/components/sections/ServiceDetails';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import CTA from '@/components/sections/CTA';
 import JsonLd from '@/components/seo/JsonLd';
@@ -54,6 +55,7 @@ export default function ServicesPage() {
         description="From product discovery through long-term operations, we cover the full software lifecycle. Pick a single service or hire a full squad — both run on the same delivery playbook."
       />
       <Services showHeader={false} />
+      <ServiceDetails />
       <ProcessSteps steps={DELIVERY_PROCESS} surface="surface" />
       <CTA
         eyebrow="Tell us what you’re building"

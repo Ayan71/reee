@@ -72,7 +72,7 @@ export default function Services({ limit, showHeader = true, title, showSeeAll =
               <motion.div
                 key={s.slug}
                 id={s.slug}
-                className="group card-surface p-5 md:p-6 flex flex-col"
+                className="group card-surface p-5 md:p-6 flex flex-col scroll-mt-32"
                 initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: (i % 4) * 0.06 + Math.floor(i / 4) * 0.03, duration: 0.5 }}
@@ -90,9 +90,10 @@ export default function Services({ limit, showHeader = true, title, showSeeAll =
                   {s.short}
                 </p>
                 <Link
-                  href={`/services#${s.slug}`}
-                  className="mt-5 inline-flex items-center gap-1 text-xs font-semibold transition-colors"
+                  href={`/services#detail-${s.slug}`}
+                  className="mt-5 inline-flex items-center gap-1 text-xs font-semibold transition-colors group-hover:gap-2"
                   style={{ color: 'var(--accent)' }}
+                  aria-label={`Learn more about ${s.title}`}
                 >
                   Learn more <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -97,9 +98,15 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-[72px]">
             {/* Brand */}
             <Link href="/" className="flex items-center gap-2.5 group" aria-label={`${COMPANY_NAME} home`}>
-              <span className="relative w-9 h-9 rounded-xl flex items-center justify-center shadow-[0_8px_20px_-8px_rgba(245,92,26,0.5)]"
-                style={{ background: 'var(--accent)' }}>
-                <span className="text-white font-bold text-sm tracking-wide">C</span>
+              <span className="relative w-10 h-10 inline-flex items-center justify-center">
+                <Image
+                  src="/codentrixa_mark.png"
+                  alt={`${COMPANY_NAME} logomark`}
+                  width={40}
+                  height={40}
+                  priority
+                  className="w-10 h-10 object-contain"
+                />
               </span>
               <span className="font-semibold text-[1.05rem] tracking-tight" style={{ color: 'var(--ink)' }}>
                 {COMPANY_NAME.slice(0, 4)}
@@ -227,9 +234,13 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between mb-8">
                 <Link href="/" className="flex items-center gap-2.5">
-                  <span className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'var(--accent)' }}>
-                    <span className="text-white font-bold text-sm">C</span>
-                  </span>
+                  <Image
+                    src="/codentrixa_mark.png"
+                    alt={`${COMPANY_NAME} logomark`}
+                    width={36}
+                    height={36}
+                    className="w-9 h-9 object-contain"
+                  />
                   <span className="font-semibold text-[1.05rem]" style={{ color: 'var(--ink)' }}>
                     {COMPANY_NAME.slice(0, 4)}
                     <span style={{ color: 'var(--accent)' }}>{COMPANY_NAME.slice(4)}</span>

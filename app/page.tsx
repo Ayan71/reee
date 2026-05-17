@@ -36,11 +36,6 @@ export default function Home() {
           serviceType: 'Custom software development and IT outsourcing',
           areaServed: 'Worldwide',
           priceRange: '$$',
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '4.9',
-            reviewCount: '24',
-          },
         }}
       />
       <Hero />
