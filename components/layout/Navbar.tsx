@@ -263,6 +263,7 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
+                        onClick={() => setMenuOpen(false)}
                         className="block px-4 py-3 rounded-xl text-sm font-medium transition-colors"
                         style={{
                           color: active ? 'var(--accent)' : 'var(--ink)',

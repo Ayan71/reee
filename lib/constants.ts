@@ -18,6 +18,7 @@ export const NAV_LINKS: { label: string; href: string }[] = [
   { label: 'Services', href: '/services' },
   { label: 'Outsourcing', href: '/outsourcing' },
   { label: 'Technologies', href: '/#technologies' },
+  { label: 'Portfolio', href: '/#portfolio' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Blog', href: '/blog' },
   { label: 'Careers', href: '/careers' },
@@ -210,6 +211,7 @@ export const NAV_MENU: NavMenuItem[] = [
   },
 ],
   },
+  { kind: 'link', label: 'Portfolio', href: '/#portfolio' },
   { kind: 'link', label: 'Contact', href: '/contact' },
 ];
 
@@ -709,7 +711,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Smart Stock ERP — Inventory & Business Management',
     category: 'SaaS Systems',
     summary:
-      'A complete inventory and business management ERP for small and medium businesses — retail shops, warehouses, and distributors.',
+      'Developed an ERP solution for inventory, stock management, sales, and business operations with a responsive dashboard.',
     problem:
       'SMBs running retail and warehouse operations were stuck between paper, Excel, and over-engineered ERPs. They needed one easy-to-use system to track stock, sales, vendors, and customers without a six-month rollout.',
     solution:
@@ -730,8 +732,86 @@ export const CASE_STUDIES: CaseStudy[] = [
         icon: 'apple',
       },
       {
-        label: 'Web App',
-        href: 'https://smartstockserp.com/#/splash',
+        label: 'Live Site',
+        href: 'https://smartstockserp.com/',
+        icon: 'globe',
+      },
+    ],
+  },
+  {
+    slug: 'real-healthcare-ayurveda',
+    client: 'Real Healthcare Ayurveda',
+    title: 'Real Healthcare Ayurveda',
+    category: 'Healthcare',
+    summary:
+      'Developed a responsive healthcare and Ayurveda website with modern UI, service pages, and optimized performance.',
+    problem:
+      'The clinic needed a trustworthy online presence to explain Ayurvedic treatments and services, but their old site was slow, hard to navigate on mobile, and did not reflect the quality of in-person care.',
+    solution:
+      'We designed and built a responsive marketing site with clear service pages, treatment information, and performance-focused delivery so patients can explore offerings and contact the clinic from any device.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'SEO'],
+    outcomes: [
+      'Responsive layout across mobile, tablet, and desktop',
+      'Structured service pages for Ayurveda and healthcare offerings',
+      'Optimized performance for faster load times',
+    ],
+    status: 'Live in production',
+    links: [
+      {
+        label: 'Live Site',
+        href: 'https://realhealthcareayurveda.com/',
+        icon: 'globe',
+      },
+    ],
+  },
+  {
+    slug: 'jivyara',
+    client: 'Jivyara',
+    title: 'Jivyara',
+    category: 'Wellness',
+    summary:
+      'Built a modern wellness platform with responsive design, clean user experience, and fast performance.',
+    problem:
+      'The brand needed a digital platform that communicated wellness offerings clearly while feeling premium, approachable, and effortless to browse on every screen size.',
+    solution:
+      'We shipped a modern wellness website with a clean information hierarchy, responsive layouts, and performance tuning so visitors can explore services and content without friction.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    outcomes: [
+      'Clean, modern UX tailored for wellness audiences',
+      'Fully responsive experience on all devices',
+      'Fast page loads and smooth navigation',
+    ],
+    status: 'Live in production',
+    links: [
+      {
+        label: 'Live Site',
+        href: 'https://www.jivyara.com/',
+        icon: 'globe',
+      },
+    ],
+  },
+  {
+    slug: 'smart-table-system',
+    client: 'Smart Table System',
+    title: 'Smart Table System',
+    category: 'Hospitality',
+    summary:
+      'Built a digital restaurant table management system featuring QR-based ordering, table management, and an intuitive interface.',
+    problem:
+      'Restaurants wanted to reduce order errors and wait times while giving staff a simple way to manage tables, menus, and guest requests during busy service hours.',
+    solution:
+      'We built a digital table management platform with QR-based ordering, live table status, and an intuitive interface for staff and diners — streamlining the full dine-in workflow.',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'QR Ordering', 'AWS'],
+    outcomes: [
+      'QR-based ordering for contactless dine-in experiences',
+      'Real-time table management for restaurant staff',
+      'Intuitive interface designed for fast-paced service',
+    ],
+    status: 'Live in production',
+    links: [
+      {
+        label: 'Live Site',
+        href: 'https://smarttablesystem.com/',
         icon: 'globe',
       },
     ],
@@ -743,6 +823,9 @@ export const CASE_STUDY_CATEGORIES = [
   'Real Estate',
   'Mobile Apps',
   'SaaS Systems',
+  'Healthcare',
+  'Wellness',
+  'Hospitality',
 ];
 
 // ─────────────────────────────  Testimonials  ────────────────────────────

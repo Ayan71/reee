@@ -7,7 +7,8 @@ export const navLinks = [
   { label: 'Services', href: '/#services' },
   { label: 'Outsourcing', href: '/#outsourcing' },
   { label: 'Technologies', href: '/#technologies' },
-  { label: 'Case Studies', href: '/#case-studies' },
+  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Case Studies', href: '/case-studies' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/#contact' },
 ];

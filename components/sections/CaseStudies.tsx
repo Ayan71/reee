@@ -41,14 +41,12 @@ export default function CaseStudies({ preview = false }: Props) {
     : CASE_STUDIES.filter((c) => c.category === active);
 
   return (
-    <section id="case-studies" className="section-padding" style={{ background: 'var(--bg)' }}>
+    <section id="portfolio" className="section-padding" style={{ background: 'var(--bg)' }}>
       <div className="container-custom" ref={ref}>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <span className="eyebrow">Our work</span>
-            <h2 className="h-section mt-3 text-balance">
-              Shipped products. Real users. Live on the stores.
-            </h2>
+            <h2 className="h-section mt-3 text-balance">Portfolio</h2>
             <p className="lede mt-4 text-pretty">
               Apps and platforms we have designed, engineered, and deployed — with links to the live
               products you can install today.
@@ -206,7 +204,7 @@ export default function CaseStudies({ preview = false }: Props) {
                           key={l.href}
                           href={l.href}
                           target="_blank"
-                          rel="noreferrer noopener"
+                          rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-transform hover:-translate-y-0.5"
                           style={{
                             background: 'var(--ink)',
